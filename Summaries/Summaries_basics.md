@@ -113,9 +113,51 @@ let b: Double = 56.78
 
 > 타입의 별칭을 만들어 활용할 수 있다.
 
+## Operators
 
+- 기본 : 연산자(Operator), 피연산자(Operand)
 
+- 단항연산자 *Unary Operator*
 
+  ```swift
+  +a // prefix operator(피연산자 앞)
+  a+ // postfix operator(피연산자 뒤)
+  ```
+
+  > 띄어쓰기 금지
+
+- 이항연산자 *Binary Operator*
+
+  ```swift
+  a + b
+  ```
+
+- 삼항연산자 *Ternary Operator*
+
+  ```swift
+  a ? b : c
+  ```
+
+- 연산자 우선순위
+
+- 연산자 결합규칙
+
+  - 좌 결합성(Left Associative, 좌에서 우로 결합하며 연산)
+  - 우 결합성(Right Associative, 우에서 좌로 결합하며 연산)
+
+### 산술 연산자 Arithmetic Operators
+
+- 종류 :
+
+  `+`, `-`, `*`, `/`, `%`
+
+- 오버플로우 관련
+
+  ```swift
+  let num: Int8 = 9 * 9 * 9		//오버플로우 발생하는 숫자는 컴파일 불가하며, 오버플로우 연산자를 사용해야한다.
+  ```
+
+  
 
 ## Others
 
