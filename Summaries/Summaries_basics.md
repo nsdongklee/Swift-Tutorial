@@ -157,7 +157,219 @@ let b: Double = 56.78
   let num: Int8 = 9 * 9 * 9		//오버플로우 발생하는 숫자는 컴파일 불가하며, 오버플로우 연산자를 사용해야한다.
   ```
 
+
+### 오버플로우 연산자 Overflow Operators
+
+일반적으로 스위프트 언어에서는 연산의 결과가 오버플로우 현상을 일으킬 때는 에러를 출력하여 컴파일 할 수 없지만 오버플로우 연산자를 통해서 연산 자체를 허용하지만 값은 일반적인 오버플로우 결과와 같게 할 수 있다.
+
+- 오버플로우 연산자의 종류와 사용
+
+  ```swift
+  // Overflow Addition Operator(&+)
+  let a: Int8 = Int8.max
+  let b: Int8 = a &+ 1
   
+  // Overflow Subtraction Operator(&-)
+  let c: Int8 = Int8.min
+  let d: Int8 = a &- 1
+  
+  // Overflow Multiplication Operator(&*)
+  let e: Int8 = Int8.max &* 2
+  ```
+
+### 비교 연산자 Comparison Operators
+
+두 개 이상의 무언가를 서로 비교할 때 사용하는 연산자(이항 연산자). 결과는 항상 *Boolean* 타입이다.
+
+- 비교 연산자의 종류
+  - `==`, `!=`, `<`, `<=`, `>`, `>=`
+
+### 논리 연산자 Logical Operators
+
+참과 거짓을 구분하는 데 사용하는 연산자. 피연산자 및 결과 또한 *Boolean* 타입
+
+- 논리 연산자의 종류
+  - `!`, `&&`, `||`
+
+### 삼항 연산자 Ternary Conditional Operator
+
+조건을 판단한 후, 실행할 코드를 결정하는 조건 연산자.
+
+- Syntax
+
+  ```swift
+  condition ? expr1 : expr2
+  ```
+
+- 조건
+
+  - `condition` 의 결과가 *Boolean*  타입으로 결과를 출력해야한다.
+  - `expr1`, `expr2` 두 결과 표현식의 자료형이 같아야 한다.
+
+### 비트 연산자 Bitwise Operators
+
+데이터의 비트 단위 연산을 수행할 때 사용된다.
+
+- 비트 연산자의 종류
+
+  - `&`, `|`, `~`, `^`
+
+- 비트 시프트(비트 단위 값의 이동)
+
+  - `<<` , `>>`
+
+    ```swift
+    // ex.
+    let a: UInt8 = 0b0010_0010
+    a << 2
+    ```
+
+    > 위 코드를 실행한 결과 `1000_1000` 비트가 된다.
+
+### 범위 연산자 Range Operators
+
+- Closed Range Operator
+
+  ```swift
+  // Example
+  a ... b
+  a...
+  ...b
+  (1 ... 10)
+  (10 ... 1)		// 값을 내림차순으로 위치시키면 오류를 출력한다.
+  (1 ... 10).reversed()
+  ```
+
+  > 해당 연산자에서는 각 시작과 끝 값을 포함한다.
+
+- Half-open Range Operator
+
+  ```swift
+  // Example
+  a ..< b
+  ..<a	// 띄어쓰기X
+  ```
+
+  > Upperbound 가 범위에 속하지 않는 연산자 이다.
+
+- One-side Range
+
+  ```swift
+  let range = ...5    //lowerbound 는 무한대가 된다.
+  range.contains(7)
+  range.contains(1)
+  ```
+
+### Short-circuit Evaluation
+
+스위프트는 결과를 얻는데 최소한의 코드만 실행한다. 예를 들어, 논리 연산자가 논리식을 평가 할 때 `a || b` 라는 비교 식이 있다면 `a` 연산을 통해 결과를 만족했다면 `b`를 실행하지 않는다.(이걸 `단락평가`라고 한다.)
+
+- 단락평가 예시
+
+  ```swift
+  var n1 = 1
+  var n2 = 1
+  
+  func updateLeft() -> Bool {
+      n1 += 1
+      return true
+  }
+  
+  func updateRight() -> Bool {
+      n2 += 1
+      return true
+  }
+  
+  if updateLeft() || updateRight() {
+      
+  }
+  ```
+
+  > n1 == 2
+  >
+  > n2 == 1
+
+- **Side Effect** : 코드의 실행결과로 인해서 값 또는 상태가 변화되는 것.
+
+## Conditional & Loop Statement
+
+> *Token : 더 이상 나눌 수 없는 것*
+>
+> *Expression : 토큰이 모여서 하나의 값이 생성 되는 것*
+>
+> *Statement : 하나 이상의 표현식이 모여서 문장이 되는 것*
+
+- **Basic Syntax**
+
+  ```swift
+  if condition {
+  	// statements
+  } else if condition {
+    // statements
+  } else {
+  	// statements
+  }
+  ```
+
+- **Switch statement** : 값의 일치 여부에 따라 실행 여부 결정하는 분기문
+
+  ```swift
+  // 값 매칭 Pattern matching
+  switch value {
+  case pattern:
+      code
+  case pattern, pattern:	// 여러 개의 패턴을 추가할 때
+      code
+  case pattern where condition:	// 해당 값에 맞을 때 조건을 추가할 수 있다.
+      code
+  default:
+      code
+  }
+  
+  // 범위 매칭 Interval matching
+  let temperature = -8
+  
+  switch temperature {
+  case ...10:
+      print("cold")
+  case 11 ... 20:
+      print("cool")
+  case 21 ... 27:
+      print("warm")
+  default:
+      print("hot")
+  }
+  
+  // Fall Through
+  let temperature = 12
+  
+  switch temperature {
+  case ...10:
+      print("cold")
+  	  fallthrough
+  case 11 ... 20:
+      print("cool")
+    	fallthrough
+  case 21 ... 27:
+      print("warm")
+  default:
+      print("hot")
+  }
+  ```
+
+  - **Fall through** : 기본적으로 `switch` 문은 위에서 부터 아래로 실행되는데 여기서 해당하는 패턴이 발견되면 `switch` 문을 빠져 나온다. 하지만 `fallthrough` 를 사용하면 다음 `case`의 조건의 일치여부와 상관없이, 다음 `fallthrough` 명령어가 없을 때 까지 출력하고 `switch` 문장을 빠져나온다.
+
+- **guard statement**
+
+  ```swift
+  guard condition else {
+      statements
+  }
+  ```
+
+  > 원하는 조건이 충족되지 않으면 불필요한 코드는 실행하지 않고 *Early Exit* 하기 위한 조건문이다.
+  >
+  > If 조건문으로 충분히 구현할 수 있으나 조건을 중첩하지 않고 간결하게 작성할 수 있는 것이 장점이다.
 
 ## Others
 
@@ -173,7 +385,6 @@ let b: Double = 56.78
   type(of: 변수)
   ```
 
-  
 
 
 
