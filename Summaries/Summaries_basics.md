@@ -371,6 +371,155 @@ let b: Double = 56.78
   >
   > If 조건문으로 충분히 구현할 수 있으나 조건을 중첩하지 않고 간결하게 작성할 수 있는 것이 장점이다.
 
+### 반복문 Loop statement
+
+- **Basic Syntax**
+
+  ```swift
+  for loopConstant in Range {
+  	// statements
+  }
+  ```
+
+- **Examples**
+
+  ```swift
+  // Ex.1
+  for idx in 1 ... 10 {
+  	print(idx)
+  }
+  
+  // Ex.2 범위 연산자 말고 stride() 를 사용해서 범위 출력
+  for num in stride(from: 0, to: 10, by: 2) {
+      print(num)
+  }
+  
+  // Ex.3 리스트 자료형 출력
+  let list = ["do", "something", "whatever"]
+  for i in list {
+      print(i)
+  }
+  ```
+
+  - `_` (Wildcard Pattern) : 값을 받았지만 무시하는 패턴
+  - `Stride(from: , to, by: )` : `from` 에서 `to` 까지  `by` 크기로 범위 변경
+
+- **While Loop**
+
+  ```swift
+  while condition {
+    // statements
+  }
+  ```
+
+- **Repeat-while**
+
+  ```swift
+  repeat {
+  	// statements
+  }	while condition
+  ```
+
+  > *statement*를 먼저 한 번 실행하고 *while* 뒤 *condition* 을 평가하고 *false* 인 상황까지 반복 실행한다.
+
+### Control Transfer Statements, Labeled Statements
+
+- 흐름 제어 구문 Control Transfer Statements
+
+  ```swift
+  for idx in 1 ... 100 {
+    	print("start")
+      if idx < 5 {
+          continue		// Control transfer, 현재 반복을 종료하고 다음 반복문을 실행.
+      }
+      if idx > 10 {
+          break				// Control transfer
+      }
+  		print("end")
+  }
+  ```
+
+  > `continue` 와 `break` 문은 조건에 따라 흐름을 제어한다. 가장 인접한 반목문에서 실행된다. 특히 `continue` 는 반복문에서만 사용할 수 있다.
+
+- **Labled Statement** : 문장에 이름을 붙이는 구문
+
+  ```swift
+  // Example
+  outer: for i in 1 ... 3 {
+      print("outer loop", i)
+      for j in 1 ... 3 {
+          print(" inner loop", j)
+          break outer
+      }
+  }
+  ```
+
+  > `break` 문은 기본적으로 가장 인접한 반복문을 종료시키지만, 문장에 이름을 붙이고 그 문장을 종료시킬 수 있다.
+
+## Optionals
+
+> 스위프트에서 `값이 없음` 을 표현하는 방식이다. 이를 나타내는 특별한 값인 `nil`과 옵셔널 형식에 저장된 값을 추출하는 방식을 정리했다.
+
+- Example
+
+  ```swift
+  let optionalNum: Int? = nil
+  ```
+
+  > 값을 `nil` 로 초기화 할 때는 반드시 자료형 지정(Type annotation)을 해야한다. *Objective-C* 에서는 존재하지 않는 객체에 대한 포인터이다. 스위프트에서는 단순히 값이 없음을 나타낸다.
+
+  - **Optional Type** : `?` 기호는 옵셔널 타입 지정을 나타내는 기호이다. 값을 초기화 시에 `?` 를 생략하면 컴파일 되지 않는다.
+
+- **Unwrapping**
+
+  ```swift
+  var num: Int? = nil
+  print(num)
+  num = 123
+  print(num)
+  
+  let n = 123
+  print(n)
+  ```
+
+  - **Forced Unwrapping**
+
+    ```swift
+    // OptionalExpr!
+    print(num)
+    print(num!)
+    
+    // 다만 경고를 출력하기 때문에, 꺼낼 값이 있을 때만 출력할 수 있도록 아래처럼 사용한다.
+    if num != nil {
+      print(num!)
+    }
+    ```
+
+    > `!` 기호를 사용하면 옵셔널 데이터가 있는 변수에 저장된 값을 강제로 추출한다. 옵셔널 변수가 값이 없을 때 강제 추출을 시도하면 오류를 출력한다.
+
+    ```swift
+    num = 123
+    let before = num        //before에 옵셔널 타입으로 그대로 저장
+    let after = num!        // 강제로 Unwrapping 하며 일반 Int로 저장된다.
+    ```
+
+- **Optional Binding** : 옵셔널을 안전하게 처리하는 방법
+
+  ```swift
+  // Sample
+  if let na
+  ```
+
+- **Implicitly Unwrapped Optionals** : 자동으로 추출되는 옵셔널
+
+  ```swift
+  Type!
+  ```
+
+  > 자료형 뒤에 `!` 를 붙인다.
+
+
+
 ## Others
 
 - 값 출력하기(print)
