@@ -550,7 +550,47 @@ let b: Double = 56.78
   }
   ```
 
-  
+- **Default Value**
+
+  ```swift
+  // ..(name: Type = Value)
+  func sayHi(to: String = "Stranger") {
+      print("Hello, \(to)")
+  }
+  sayHi(to: "Swift")		// Hello, Swift
+  sayHi()								// Hello, Stranger
+  ```
+
+- **Argument Label**
+
+  - 함수에 사용되는 인자에 라벨을 붙일 수 있다는 것을 의미한다. 이 개념을 사용하는 가장 큰 목적은 **함수 이름의 가독성을 높이기 위해서** 이다. 
+
+  - `(name: Type)` : **name** 이라는 변수명이 `Parameter Name` 과 `Argument Label` 의 역할을 동시에 하고 있다.
+
+  - `(label name: Type)` : label 을 따로 붙여주어 `Parameter Name` 과 `Argument Label` 의 역할을 나누어 함수 사용 시에 가독성을 높여준다.
+
+    ```swift
+    // Ex.
+    func sayHello2(name: String) {
+        print("Hello, \(name)")
+    }
+    sayHello2(name: "Swift")
+    
+    func sayHello3(to name: String) {
+        print("Hello, \(name)")
+    }
+    sayHello3(to: "Swift")
+    
+    // Label 생략(와일드카드 패턴 사용)
+    func sayHello4(_ name: String) {
+        print("Hello, \(name)")
+    }
+    sayHello4("Swift")
+    ```
+
+    > Label 을 붙이고 위의 함수와 동일하게 변수명을 사용하여도 에러를 출력하지 않는다. *Argument Label*은 함수를 호출할 때 쓴다. *Wildcard Pattern* 을 사용하여 생략할 수 있다. 생략한 경우 값만 입력한다.
+
+  - 
 
 
 
