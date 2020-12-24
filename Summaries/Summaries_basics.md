@@ -518,6 +518,40 @@ let b: Double = 56.78
 
   > 자료형 뒤에 `!` 를 붙인다.
 
+## Functions
+
+> 함수를 활용하는 가장 큰 장점은 재사용성(Reusability) 이다. 스위프트에는 *Swift Standard Library* 라는 제공되는 함수들이 있다.
+
+- **Calling Functions**
+
+  ```swift
+  // functionName(parameters)
+  print("DoSomething")
+  ```
+
+- **Defining Functions**
+
+  ```swift
+  func name(parameters) -> ReturnType {
+  	// statements
+    return expr				// 리턴값이 없는 void 형식이면 return 생략
+  }
+  ```
+
+  > 함수 이름은 lowerCamelCase 형식으로 작성한다. 파라미터는 생략할 수 있다. `Return Arrow` 와 뒤에 리턴 타입을 지정하여 함수의 결과로 리턴 값의 자료형 형식을 지정한다.
+
+- **파라미터 사용하기**
+
+  ```swift
+  // Ex.
+  func newAdd(a: Int, b: Int) -> Int {
+      // a = 12  Error(파라미터로 들어오는 변수는 임시 상수가 된다.)
+      return a + b
+  }
+  ```
+
+  
+
 
 
 ## Others
