@@ -590,7 +590,119 @@ let b: Double = 56.78
 
     > Label 을 붙이고 위의 함수와 동일하게 변수명을 사용하여도 에러를 출력하지 않는다. *Argument Label*은 함수를 호출할 때 쓴다. *Wildcard Pattern* 을 사용하여 생략할 수 있다. 생략한 경우 값만 입력한다.
 
-  - 
+- **Varidic Parameters**
+
+  ```swift
+  // Ex.
+  ```
+
+## Closures
+
+> **Closure** 는 비교적 짧고 독립적인 코드 구조 이며, 스위프트에서는 **Code Block** 이라고 하며 **Java** 에서는 **Lambda** 라 불린다.
+>
+> 스위프트에서는 세 가지 클로저를 제공하며 일반적인 함수와 중첩함수는 Named Closures 라고 하며, 이름이 없는 함수는 Unnamed Closures 라고 한다.
+
+- **Syntax**
+
+  ```swift
+  { (parameter) -> ReturnType in
+  	// statement
+  }
+  	{statement}
+  ```
+
+  > 파라미터와 리턴타입을 지정하는 것은 함수와 유사하며, `in` 키워드를 통해 *Closure Head and Body* 를 구분한다.
+
+- **Closure Syntax Optimization**
+
+  - 스위프트는 컴파일러가 추론할 수 있는 부분을 생략하고, 문법 최적화를 통해서 단순화 하는 방식을 추구한다.
+
+  - 종류 : `Implicit Return`, `Trailing Closures`, `Shorthand Argument Names`
+
+    ```swift
+    var proModels = products.filter({ (name: String) -> Bool in
+        return name.contains("Pro")
+    })
+    
+    // 1. 클로저 형식에서 파라미터 자료형과 리턴타입을 생략할 수 있다.
+    products.filter({ (name) in
+        return name.contains("Pro")
+    })
+    
+    // 2. 파라미터의 이름을 Shorthand Argument Name 으로 대체할 수 있다.(파라미터 이름과 'in' 키워드 생략)
+    products.filter({
+        return $0.contains("Pro")
+    })
+    
+    // 3. Implicit returns : 리턴 키워드 생략
+    products.filter({
+        $0.contains("Pro")
+    })
+    
+    // 4. 클로저 파라미터가 마지막 파라미터라면 Trailing Closure 로 작성한다.
+    products.filter() {
+        $0.contains("Pro")
+    }
+    ```
+
+- **Capturing Values**
+
+  ```swift
+  // Ex.
+  var num = 0
+  let c = {
+    num += 1			// 연산 적용되는지 확인
+    print("check point #1: \(num)")
+  }
+  c()
+  ```
+
+  > 클로저 내부에서 외부에 정의된 값을 접근하려고 할 때 값을 복사하는 것이 아니라 원본을 그대로 참조한다.
+
+## Tuples
+
+> Scalar Type : 하나의 값을 저장하는 타입(`Int`, `String` 등 일반적인 자료형)
+>
+> Compound Type : 튜플과 같이 여러 개를 동시에 저장.
+
+- **Syntax**
+
+  ```swift
+  // Original(expr1, expr2, ...)
+  let data = ("<html>", 200, "OK", 12.34)
+  ```
+
+  > 값을 나열하면 된다.
+
+  ```swift
+  // Named Tuple
+  let named = (body: "<html>", statusCode: 200, statusMessage: "OK", dataSize: 12.34)
+  
+  // 가독성이 좋아진다.
+  named.statusCode
+  ```
+
+- **주의사항** :
+
+  - 다양한 자료형을 한번에 입력할 수 있다.
+  - 튜플의 값을 삭제 및 추가할 수 없다.
+  - `tupleExpr.n` : `n` 의 인덱스 를 활용하여 튜플 표현식에 접근할 수 있다.
+
+- **tuple Decomposition(분해)**: 튜플로 된 자료형을 개별 상수, 변수에 저장하는 방식
+
+  ```swift
+  let data = ("<html>", 200, "OK", 12.34)
+  let (body, code, message, _) = data
+  ```
+
+  > 만들고 싶지 않은 변수는 Wildcard Pattern 으로 받는다.
+
+## Characters and Strings
+
+> 스위프트에서 문자와 문자열 다루기. 문자열은 구조체 형식으로 구현되어있다.
+
+1. *String : 구조체로 구현되어있음(Swift String)*
+2. *NSString : 참조 형식으로 구현되어있음(Foundation String)*
 
 
 
