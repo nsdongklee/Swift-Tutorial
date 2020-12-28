@@ -714,6 +714,18 @@ let b: Double = 56.78
 
   > 스위프트에서는 문자열 인덱스를 정수로 참조할 수 없다. 유니코드의 독립적인 형태로 문자열을 처리하기 때문이다.
 
+- **Substring**
+
+  ```swift
+  let str = "Hello Swift"
+  var first = str.prefix(1)		// H
+  
+  // 새로운 메모리 공간에 저장하고 싶을 때
+  let newStr = String(str2.prefix(3))
+  ```
+
+  > 스위프트의 이전 버전에서 Substring 을 진행하면 새로운 메모리 공간을 할당하여 저장했지만, 현재 버전은 원본 문자열을 공유한다.(Copy on Write Optimization)
+
 - 
 
 ## Others
