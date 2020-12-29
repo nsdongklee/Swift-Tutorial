@@ -52,3 +52,62 @@ if let result = str.range(of: "Swift", options: [.anchored, .backwards]) {
 
 str.lowercased().hasPrefix("swift")
 
+
+// Numeric Option
+"A" < "B"
+"a" < "B"
+
+let file9 = "file9.txt"
+let file10 = "file10.txt"
+file9 < file10
+
+file9.compare(file10) == .orderedAscending
+file9.compare(file10, options: [.numeric]) == .orderedAscending
+
+// Diacritic Insensitive(발음기호 처리)
+let aa = "Cafe"
+let ab = "Cafè"
+
+aa == ab
+aa.compare(ab, options: [.diacriticInsensitive]) == .orderedSame
+
+// Width Insensitive Option
+let japanA = "\u{30A1}"
+let japanAA = "\u{ff67}"
+
+japanA == japanAA
+japanA.compare(japanAA, options: [.widthInsensitive]) == .orderedSame
+
+// Forced Ordering Option(강제 정렬)
+let upper = "STRING"
+let lower = "string"
+
+upper == lower
+upper.compare(lower, options: [.caseInsensitive]) == .orderedSame   // 대소문자 무시
+upper.compare(lower, options: [.caseInsensitive, .forcedOrdering]) == .orderedSame
+
+// Regular Expression(정규표현식)
+let emailPattern = "([0-9a-zA-Z_-]+)@([0-9a-zA-Z_-]+)(\\.[0-9a-zA-Z_-]+){1,2}"
+let emailAddr = "user@example.com"
+
+if let _ = emailAddr.range(of: emailPattern) {
+    print("found pattern")
+} else {
+    print("not found")
+}
+// add option
+if let _ = emailAddr.range(of: emailPattern, options: [.regularExpression]) {
+    print("found pattern")
+} else {
+    print("not found")
+}
+
+// add index
+if let range = emailAddr.range(of: emailPattern, options: [.regularExpression]), (range.lowerBound, range.upperBound) == (emailAddr.startIndex, emailAddr.endIndex) {
+    print("found pattern")
+} else {
+    print("not found")
+}
+
+// Character Set(문자집합)
+
