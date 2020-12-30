@@ -109,5 +109,33 @@ if let range = emailAddr.range(of: emailPattern, options: [.regularExpression]),
     print("not found")
 }
 
-// Character Set(문자집합)
+// Character Set(문자집합): 문자열 검색, 잘못된 문자 삭제 등에 사용
+let cc = CharacterSet.uppercaseLetters      // 대문자만 포함된 char-set
+let dd = cc.inverted    // 소문자만 포함된 char-set
+
+var setStr = "loRem Ipsum"
+var charSet = CharacterSet.uppercaseLetters
+if let range = setStr.rangeOfCharacter(from: charSet) {
+    print(setStr.distance(from: setStr.startIndex, to: range.lowerBound))
+}
+if let range = setStr.rangeOfCharacter(from: charSet, options: [.backwards]) {
+    print(setStr.distance(from: setStr.startIndex, to: range.lowerBound))
+}
+
+setStr = " A p p l e "
+charSet = .whitespaces
+let trimmed = setStr.trimmingCharacters(in: charSet)
+print(trimmed)
+
+// charset 편집
+var editTarget = CharacterSet.uppercaseLetters
+editTarget.insert("#")  // 단일문자 삽입
+editTarget.insert(charactersIn: "~!@")  // 3개 문자를 동시에 삽입
+editTarget.remove("A")
+editTarget.remove(charactersIn: "BCD")
+
+// Custom CharSet
+let customCharSet = CharacterSet(charactersIn: "@.")
+let email = "user@example.com"
+let components = email.components(separatedBy: customCharSet)
 
