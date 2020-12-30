@@ -726,7 +726,58 @@ let b: Double = 56.78
 
   > 스위프트의 이전 버전에서 Substring 을 진행하면 새로운 메모리 공간을 할당하여 저장했지만, 현재 버전은 원본 문자열을 공유한다.(Copy on Write Optimization)
 
-- 
+
+
+## Collection
+
+> .
+
+- **Foundation Collection 과 Swift Collection 의 비교**
+
+- **Array**
+
+  ```swift
+  // Array Literal
+  [elem, elem, elem, ...]
+  
+  // 자료형 선언: 정식 문법 Array<Type>, 단축문법 [T]
+  let strArr: Array<String>
+  let strArr2: [String]
+  ```
+
+  > 0-based Index, 값과 관계없이 동일한 자료형만 담을 수 있다.
+  >
+  > 자료형을 지정하려고 할 때, 타입 지정은 `Array<Type>` 으로 선언할 수 있고, 단축문법으로 `[T]` 를 사용할 수 있다.
+
+  - Examples
+
+- **Dictionary**
+
+  ```swift
+  // Dictionary Literal
+  // [key: value, key: value, ...]
+  var dict = ["A": "Apple", "B": "Banana"]
+  var annoDict = [:]
+  
+  // 자료형 선언: 정식 문법 Dictionary<K,V>, 단축문법 [K:V]
+  let dict1: Dictionary<String, Int>
+  let dict2: [String: Int]
+  ```
+
+  > 딕셔너리 자료형 선언의 두 가지 방식. 특히 아래 두 번째 Type Annotion 방식에서 `.` 및 `:` 사용에 주의해야한다. 
+
+- **Set**
+
+  ```swift
+  // 자료형 선언: Set<T>
+  ```
+
+  > Set 자료형은 리터럴이 없고, 배열 형식처럼 사용한다.
+
+  - 주로 검색속도가 중요할 때, 배열 대신 사용한다.
+  - 정렬되지 않고, 인덱스를 사용하지 않음.
+  - 동일한 값은 하나만 저장한다.
+  - 
 
 ## Others
 
@@ -749,4 +800,8 @@ let b: Double = 56.78
 
 - [어서와, Swift는 처음이지? / 프로그래머스](https://programmers.co.kr/learn/courses/9873)
 - 
+
+```
+딕셔너리 자료형 선언의 두 가지 방식 특히 아래 두 번째 
+```
 
