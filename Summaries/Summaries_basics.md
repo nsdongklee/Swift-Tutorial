@@ -777,7 +777,64 @@ let b: Double = 56.78
   - 주로 검색속도가 중요할 때, 배열 대신 사용한다.
   - 정렬되지 않고, 인덱스를 사용하지 않음.
   - 동일한 값은 하나만 저장한다.
-  - 
+
+- **Iterating Collections**
+
+### Enumeration
+
+열거형은 독립적인 자료형으로 사용된다. 코드의 가독성과 안정성이 높아진다.
+
+- Syntax
+
+  ```swift
+  
+  ```
+
+- Raw values
+
+  ```swift
+  enum TypeName: RawValueType {
+    case caseName = value
+  }
+  ```
+
+  - 내부에 또 다른 값인 원시값은 필수가 아니지만 필요할 때가 있다.
+  - `RawValueType` : 원시값의 자료형을 지정. `String`, `Character`, `Number Types` 만 지정할 수 있다.
+
+### Structure And Class
+
+- **Syntax**, Structure
+
+  ```swift
+  struct StructName {
+  	// property
+  	// method
+  	// initializer
+  	// subscript
+  }
+  ```
+
+- **Syntax**, Class
+
+  ```swift
+  class ClassName {
+  	// property
+  	// method
+  	// initializer
+    // deinitializer
+  	// subscript
+  }
+  ```
+
+- **Initializer Syntax** 
+
+  ```swift
+  init(parameter) {
+  	//statement
+  }
+  ```
+
+  > 모든 생성자는 초기값을 가진다.
 
 ## Others
 
