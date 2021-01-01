@@ -836,6 +836,20 @@ let b: Double = 56.78
 
   > 모든 생성자는 초기값을 가진다.
 
+## Properties
+
+> 여러 속성에 대해서 정리
+
+- Lazy Stored Properties(지연속성)
+
+  ```swift
+  lazy var name: Type = DefaultValue
+  ```
+
+  > 일반적으로 저장속성은 초기값을 가질 때부터 시작이지만, 지연속성은 처음 접근 시 부터 저장되는 것을 말한다.
+
+- 
+
 ## Others
 
 - 값 출력하기(print)
