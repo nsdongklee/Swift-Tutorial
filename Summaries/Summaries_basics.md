@@ -848,7 +848,78 @@ let b: Double = 56.78
 
   > 일반적으로 저장속성은 초기값을 가질 때부터 시작이지만, 지연속성은 처음 접근 시 부터 저장되는 것을 말한다.
 
-- 
+- Computed Property(계산속성)
+
+  ```swift
+  var name: Type {
+  	get {
+  		// statements
+  		return expr
+  	}
+  	set (name) {
+  		// statements
+  	}
+  }
+  ```
+
+  > 다른 속성을 기반으로 동작한다. `get block`  은 속성값을 읽을 때 사용한다. `set block` 은 값을 저장할 때 사용한다.
+
+  - Read-Only Computed Property
+
+    ```swift
+    var name: Type {
+    	get {
+    		// statements
+    		return expr
+    	}
+    }
+    
+    // 또는 get 키워드와 블록을 생략할 수 있다.
+    var name: Type {
+    		// statements
+    		return expr
+    }
+    ```
+
+- Property Observer: 속성 감시자
+
+  ```swift
+  var name: Type {
+  	willSet {
+  		// statements
+  	}
+  	didset (name) {
+  		// statements
+  	}
+  }
+  ```
+
+  > `willset` 블록을 실행하면 `newValue` 값이 파라미터로 전달되고, `didset` 블록을 실행하면 `oldValue` 값이 파라미터로 전달된다.
+
+- Type Property
+
+- Self & Super
+
+  - `self` 는 직접 선언하지 않고, 자동 추가된다.
+
+  - 인스턴스의 멤버 내부에서 접근하면 해당 인스턴스에 접근.
+
+    ```swift
+    // 다양한 self 표현식
+    self
+    self.propertyName
+    self.method()		// 인스턴스 메소드 호출
+    self[index]			// 서브스크립트 호출
+    self.init(parameters)	// 동일한 형식에 있는 다른 생성자를 호출할 떄
+    
+    // 다양한 super 표현식
+    super.propertyName
+    super.method()	
+    super[index]		
+    super.init(parameters)
+    ```
+
+    > 두 키워드는 문법 사용방식은 유사하지만,`super` 속성은 상속과 관련있기 때문에 `class` 에서만 사용한다,
 
 ## Others
 
