@@ -921,6 +921,65 @@ let b: Double = 56.78
 
     > 두 키워드는 문법 사용방식은 유사하지만,`super` 속성은 상속과 관련있기 때문에 `class` 에서만 사용한다,
 
+## Inheritance And Polynomism
+
+> asd
+
+### Inheritance
+
+- Syntax
+
+  ```swift
+  class ClassName: SuperClassName {
+  	// ...
+  }
+  ```
+
+  > *Subclassing* 문법으로, 상속받을 슈퍼클래스와 이름을 지정하면 된다.
+
+- Overriding(재정의)
+
+  ```swift
+  
+  ```
+
+  > Super Class 로 부터 상속한 멤버를 재정의 하는 방법
+
+- UpCasting and DownCasting
+
+  ```swift
+  
+  ```
+
+  > 인스턴스를 동일한 클래스 계층에 존재하는 다른 클래스 형식으로 처리하는 방법
+
+  - *UpCasting* : 서브클래스 인스턴스를 슈퍼클래스 형식으로 저장
+  - *DownCasting* : `as!` 키워드를 사용하며 Upcasting 과 반대
+
+- Type Check Operator
+
+  - Syntax
+
+  ```swift
+  expression is Type
+  ```
+
+  > 형식을 확인할 표현식과 타입이 있으며, 결과값은 Boolean 으로 나타난다.
+
+- Overloading
+
+  - 동일한 이름을 가진 멤버를 구현하는 방법
+  - 함수이름이 동일하면 파라미터 수로 식별한다. 
+  - 함수이름, 파라미터 수가 동일하면 파라미터 자료형으로 구분한다.
+  - 두 개가 모두 동일하면 Argument Label `_`로 구분한다.
+
+## Initializers  
+
+- Initializers
+  - Convenience Initializer : 
+  - Initializer Delegation : 다른 Initializer 를 호출하는 패턴
+  - Memberwise Initializer : 
+
 ## Others
 
 - 값 출력하기(print)
@@ -934,8 +993,29 @@ let b: Double = 56.78
   ```swift
   type(of: 변수)
   ```
+  
+- 범용 자료형 *Any and AnyObject*
 
+  ```swift
+  var data: Any
+  data = 2.3
+  data = "str"
+  data = [1, 2, 3]
+  ...
+  ```
 
+  - 메소드를 사용하기 위해서는 타입 캐스팅이 필요하다.
+
+    ```swift
+    if let str = data as? String {
+        print(str.count)
+    }   else if let list = data as? [Int] {
+        // statement
+    }
+    ...
+    ```
+
+    
 
 
 ## References
