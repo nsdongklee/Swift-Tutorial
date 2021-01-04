@@ -976,9 +976,44 @@ let b: Double = 56.78
 ## Initializers  
 
 - Initializers
+
   - Convenience Initializer : 
   - Initializer Delegation : 다른 Initializer 를 호출하는 패턴
   - Memberwise Initializer : 
+
+- Designated and Convenience Initializer 
+
+  - 클래스에서 구현하는 이니셜라이저는 2가지 종류가 있다.
+  - 슈퍼클래스에서 구현한 이니셜라이저는 기본적으로 상속되지 않는다.
+  - Deginated Initializer 를 사용하면 모든 변수를 초기화 해야하지만 컨비이니를 사용하면 원하는 변수만 초기화 할수 있다. 컨비를 사용하는 경우, 나머지 변수는 상속된 초기화 메소드를 가져온다.
+
+- Required Initializer(필수 생성자)
+
+  - 상속된 클래스에서 슈퍼클래스의 변수를 초기화하기위한 메소드
+  - 슈퍼클래스의 init() 메소드에 `required` 키워드를 붙인다.
+  - 서브클래스에서 `required init` 을 구현할 때는 슈퍼클래스와 동일한 형태로 작성한다. 
+
+- Initializer Delegation
+
+  - 인스턴스가 초기화 되는 과정. 단어 의미 그 자체로는 다른 초기화를 호출하는 것을 말한다.
+
+    ```swift
+    // Sample
+    init(value: Double) {
+      self.init(w: value, h: value)
+    }
+    ```
+
+    > 전체 속성이 초기화 된 상태여야 사용할 수 있다. 중복 코드를 줄여 유지보수하기 수월해진다.
+
+  - 초기화 코드에서 중복을 제거하고, 모든 속성의 초기화를 최적화 하기
+    위한 과정이다.
+
+  - 3가지 규칙
+
+    1. *Delegate Up*: 반드시 슈퍼클래스의 Designated Initializer 를 호출해야한다.
+    2. *Delegate Cross*: Convenience Initializer 는 동일한 클래스의 다른 Initializer 를 호출해야 한다.
+    3. 모든 Convenience Initializer 는 최종적으로 Designated Initializer 를 호출해야한다.
 
 ## Others
 
