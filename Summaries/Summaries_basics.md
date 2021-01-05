@@ -1014,6 +1014,40 @@ let b: Double = 56.78
     1. *Delegate Up*: 반드시 슈퍼클래스의 Designated Initializer 를 호출해야한다.
     2. *Delegate Cross*: Convenience Initializer 는 동일한 클래스의 다른 Initializer 를 호출해야 한다.
     3. 모든 Convenience Initializer 는 최종적으로 Designated Initializer 를 호출해야한다.
+  
+- Failable Initializer
+
+  - 초기화 실패 시, 옵셔널로 처리하는 방법
+
+  - Syntax
+
+    ```swift
+    // 초기화 실패 시 nil 리턴
+    init?(parameter) {
+      //initialization
+    }
+    
+    // 초기화 실패 시 크래시 발생
+    init!(parameter) {
+      //initialization
+    }
+    ```
+
+## Extensions
+
+> 속성 메소드 생성자 등의 형식을 확장하는데 사용된다. 새로운 멤버로 추가하는 것은 가능하지만, 기존 멤버를 오버라이딩 하는 것은 불가능하다.
+
+- Syntax
+
+  ```swift
+  extension Type {	// 타입은 확장하고자 하는 형식을 말한다.
+  	// ...
+  }
+  ```
+
+  - 계산속성만 추가할 수 있다.
+
+
 
 ## Others
 

@@ -1,8 +1,8 @@
 import UIKit
 
 class Figure {
-   let width: Double
-   let height: Double
+   var width: Double
+   var height: Double
    
    init(width: Double, height: Double) {
       self.width = width
@@ -28,7 +28,10 @@ class Circle: Figure {
    }
    
     // 여기에서 새로운 생성자를 구현해 주세요.
-   
+    init?(radius: Double) {
+        self.radius = radius
+        super.init(width: 0.0, height: 0.0)
+    }
 }
 
 class Triangle: Figure {
@@ -38,7 +41,14 @@ class Triangle: Figure {
 }
 
 // 여기에서 Square 클래스를 선언해 주세요.
-
+class Square: Rectangle {
+    init(from: Double) {
+        super.init(width: sqrt(from), height: sqrt(from))
+    }
+    func area(side: Double) -> Double {
+        return side * side
+    }
+}
 
 // 아래에 있는 코드는 수정하지 마세요.
 var validCount = 0
