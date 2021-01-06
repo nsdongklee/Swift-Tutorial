@@ -1047,6 +1047,66 @@ let b: Double = 56.78
 
   - 계산속성만 추가할 수 있다.
 
+## Protocol
+
+> 프로토콜은 형식에서 제공하는 멤버 목록이다. 특정 역할을 하기 위한 메소드, 속성 등의 청사진. 프로토콜을 채용한 형식은 프로토콜이 요구하는 사항을 충족해야한다.
+
+- Syntax
+
+  ```swift
+  protocol ProtocoName {
+    // propertyRequrements
+    // methodRequrements
+    // initializerRequrements
+    // subscriptRequrements
+  }
+  
+  protocol ProtocolName: Protocol, ... {
+    // ...
+  }
+  
+  protocol ProtocolName: AnyObject {
+    // AnyObject 를 선언하면 클래스 전용 프로토콜로 생성된다.
+  }
+  ```
+
+  > 선언만 오고 구현은 하지 않는다. 또한 다중 상속을 허용한다.
+
+- 프로토콜에서 속성 선언하기
+
+  ```swift
+  protocol ProtocolName {
+    var name: Type { get set }
+    static var name: Type { get set }
+  }
+  ```
+
+  > `get` , `set` 두 키워드의 유무가 속성의 가변성을 대변한다.
+
+- 프로토콜에서 메소드 선언하기
+
+  ```swift
+  protocol ProtocolName {
+    func name(param) -> ReturnType
+    static func name(param) -> ReturnType		// 타입 메소드를 선언할 때(?)
+    mutating func name(param) -> ReturnType	// 메소드에서 속성 값을 바꿔야할 때
+  }
+  ```
+
+  > 메소드 헤드 부분만 선언한다.
+
+- 프로토콜에서 생성자 선언하기
+
+  ```swift
+  protocol ProtocolName {
+    init()
+    init?()
+    init!()
+  }
+  ```
+
+
+
 
 
 ## Others
