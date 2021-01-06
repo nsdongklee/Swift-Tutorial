@@ -115,3 +115,31 @@ class Oval: Circle {    // 중복선언은 허용하지 않는다.
         self.init()
     }
 }
+
+protocol Grayscale {
+    init?(white: Double)
+}
+
+struct Color: Grayscale {
+    init(white: Double) {
+        // ...
+    }
+}
+
+// Subscript requirements
+protocol List {
+    subscript(idx: Int) -> Int { get }
+}
+
+struct DataStore: List {
+    subscript(idx: Int) -> Int {
+        get {
+            return 0
+        }
+        set {
+            // ...
+        }
+    }
+}
+
+

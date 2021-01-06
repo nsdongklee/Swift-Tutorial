@@ -1105,6 +1105,16 @@ let b: Double = 56.78
   }
   ```
 
+- 프로토콜에서 서브스크립트 선언하기
+
+  ```swift
+  protocol ProtocolName {
+    subscript(param) -> ReturnType { get set }
+  }
+  ```
+
+  
+
 
 
 
