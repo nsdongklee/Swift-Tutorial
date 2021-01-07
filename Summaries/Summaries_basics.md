@@ -1115,25 +1115,72 @@ let b: Double = 56.78
 
   
 
+## Generic
 
+> 특정 형식과 연관되지 않아 범용성이 높은 코드를 구현할 수 있다.
 
+- Syntax
 
+  ```swift
+  func name<T>(parameter) -> Type {
+    // code
+  }
+  ```
+
+  > 기존의 함수선언 형태에서 `<T>` 가 추가되었다.
+
+- Type Constraints
+
+  - 제너릭 함수를 사용하면 함수 내에서 비교연산자 등의 연산자를 쉽게 사용할 수 없다. 타입에 제한이 없기 때문에 정의된 연산자들을 사용하지 못하기 때문이다. 이 때, Type Constraints 를 활용할 수 있다.
+
+    ```swift
+    <TypeParameter: ClassName>
+    <TypeParameter: ProtocolName>
+    ```
+
+- Specialized
+
+  - 동일한 함수가 있다면 파라미터에 들어오는 인자에 따라 결정된다.
+
+- Generic Types
+
+  ```swift
+  class Name<T> {
+    // code
+  }
+  
+  struct Name<T> {
+    // code
+  }
+  
+  enum Name<T> {
+    // code
+  }
+  ```
+
+- Associated Types(연관 형식)
+
+  ```swift
+  associatedtype Name: Type
+  ```
+
+  > 연관형식으로 추론할 수 있게 할 수 있으며, 타입도 추가할 수 있다.(선택)
 
 ## Others
 
-- 값 출력하기(print)
+- **값 출력하기(print)**
 
   ```swift
   print(값, 변수등)
   ```
 
-- 자료형의 형식 확인
+- **자료형의 형식 확인**
 
   ```swift
   type(of: 변수)
   ```
   
-- 범용 자료형 *Any and AnyObject*
+- **범용 자료형 *Any and AnyObject***
 
   ```swift
   var data: Any
@@ -1154,15 +1201,43 @@ let b: Double = 56.78
     ...
     ```
 
-    
+- **Automatic Reference Counting(ARC)**
+
+  - 스위프트에서 제공하는 메모리 관리 모델
+
+  - 스택에 저장되는 메모리는  자동으로 관리되지만 힙에 저장되는 메모리는 직접 관리 해주어야한다.
+
+  - *Retain and Release*
+
+    - 클래스에서 참조할 때 발생
+    - 모든 소유를 release 하면 소멸자가 실행된다.
+
+  - *Strong Reference Cycle*
+
+    - Weak Referece(약한 참조)
+
+      ```swift
+      weak var name: Type?
+      ```
+
+      > 소유 카운트가 증가하지 않는다. Optional 형식이다.
+
+    - Unowned Reference(비소유 참조)
+
+      ```swift
+      unowned var name: Type
+      ```
+
+      > Non-Optional 형식이다.
+
+  - *Closure Capture List*
+
+    - 클로저에서 발생하는 강한 참조 사이클을 해결하는 방법
 
 
 ## References
 
 - [어서와, Swift는 처음이지? / 프로그래머스](https://programmers.co.kr/learn/courses/9873)
-- 
 
-```
-딕셔너리 자료형 선언의 두 가지 방식 특히 아래 두 번째 
-```
+  
 
