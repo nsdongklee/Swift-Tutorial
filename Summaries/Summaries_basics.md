@@ -840,7 +840,7 @@ let b: Double = 56.78
 
 > 여러 속성에 대해서 정리
 
-- Lazy Stored Properties(지연속성)
+- **Lazy Stored Properties(지연속성)**
 
   ```swift
   lazy var name: Type = DefaultValue
@@ -848,7 +848,7 @@ let b: Double = 56.78
 
   > 일반적으로 저장속성은 초기값을 가질 때부터 시작이지만, 지연속성은 처음 접근 시 부터 저장되는 것을 말한다.
 
-- Computed Property(계산속성)
+- **Computed Property(계산속성)**
 
   ```swift
   var name: Type {
@@ -896,7 +896,7 @@ let b: Double = 56.78
 
   > `willset` 블록을 실행하면 `newValue` 값이 파라미터로 전달되고, `didset` 블록을 실행하면 `oldValue` 값이 파라미터로 전달된다.
 
-- Type Property
+- **Type Property**
 
 - Self & Super
 
@@ -927,7 +927,7 @@ let b: Double = 56.78
 
 ### Inheritance
 
-- Syntax
+- **Syntax**
 
   ```swift
   class ClassName: SuperClassName {
@@ -937,7 +937,7 @@ let b: Double = 56.78
 
   > *Subclassing* 문법으로, 상속받을 슈퍼클래스와 이름을 지정하면 된다.
 
-- Overriding(재정의)
+- **Overriding(재정의)**
 
   ```swift
   
@@ -945,7 +945,7 @@ let b: Double = 56.78
 
   > Super Class 로 부터 상속한 멤버를 재정의 하는 방법
 
-- UpCasting and DownCasting
+- **UpCasting and DownCasting**
 
   ```swift
   
@@ -956,7 +956,7 @@ let b: Double = 56.78
   - *UpCasting* : 서브클래스 인스턴스를 슈퍼클래스 형식으로 저장
   - *DownCasting* : `as!` 키워드를 사용하며 Upcasting 과 반대
 
-- Type Check Operator
+- **Type Check Operator**
 
   - Syntax
 
@@ -966,7 +966,7 @@ let b: Double = 56.78
 
   > 형식을 확인할 표현식과 타입이 있으며, 결과값은 Boolean 으로 나타난다.
 
-- Overloading
+- **Overloading**
 
   - 동일한 이름을 가진 멤버를 구현하는 방법
   - 함수이름이 동일하면 파라미터 수로 식별한다. 
@@ -975,25 +975,25 @@ let b: Double = 56.78
 
 ## Initializers  
 
-- Initializers
+- **Initializers**
 
   - Convenience Initializer : 
   - Initializer Delegation : 다른 Initializer 를 호출하는 패턴
   - Memberwise Initializer : 
 
-- Designated and Convenience Initializer 
+- **Designated and Convenience Initializer** 
 
   - 클래스에서 구현하는 이니셜라이저는 2가지 종류가 있다.
   - 슈퍼클래스에서 구현한 이니셜라이저는 기본적으로 상속되지 않는다.
   - Deginated Initializer 를 사용하면 모든 변수를 초기화 해야하지만 컨비이니를 사용하면 원하는 변수만 초기화 할수 있다. 컨비를 사용하는 경우, 나머지 변수는 상속된 초기화 메소드를 가져온다.
 
-- Required Initializer(필수 생성자)
+- **Required Initializer(필수 생성자)**
 
   - 상속된 클래스에서 슈퍼클래스의 변수를 초기화하기위한 메소드
   - 슈퍼클래스의 init() 메소드에 `required` 키워드를 붙인다.
   - 서브클래스에서 `required init` 을 구현할 때는 슈퍼클래스와 동일한 형태로 작성한다. 
 
-- Initializer Delegation
+- **Initializer Delegation**
 
   - 인스턴스가 초기화 되는 과정. 단어 의미 그 자체로는 다른 초기화를 호출하는 것을 말한다.
 
@@ -1015,11 +1015,11 @@ let b: Double = 56.78
     2. *Delegate Cross*: Convenience Initializer 는 동일한 클래스의 다른 Initializer 를 호출해야 한다.
     3. 모든 Convenience Initializer 는 최종적으로 Designated Initializer 를 호출해야한다.
   
-- Failable Initializer
+- **Failable Initializer**
 
   - 초기화 실패 시, 옵셔널로 처리하는 방법
 
-  - Syntax
+  - **Syntax**
 
     ```swift
     // 초기화 실패 시 nil 리턴
@@ -1037,7 +1037,7 @@ let b: Double = 56.78
 
 > 속성 메소드 생성자 등의 형식을 확장하는데 사용된다. 새로운 멤버로 추가하는 것은 가능하지만, 기존 멤버를 오버라이딩 하는 것은 불가능하다.
 
-- Syntax
+- **Syntax**
 
   ```swift
   extension Type {	// 타입은 확장하고자 하는 형식을 말한다.
@@ -1051,7 +1051,7 @@ let b: Double = 56.78
 
 > 프로토콜은 형식에서 제공하는 멤버 목록이다. 특정 역할을 하기 위한 메소드, 속성 등의 청사진. 프로토콜을 채용한 형식은 프로토콜이 요구하는 사항을 충족해야한다.
 
-- Syntax
+- **Syntax**
 
   ```swift
   protocol ProtocoName {
@@ -1072,7 +1072,7 @@ let b: Double = 56.78
 
   > 선언만 오고 구현은 하지 않는다. 또한 다중 상속을 허용한다.
 
-- 프로토콜에서 속성 선언하기
+- **프로토콜에서 속성 선언하기**
 
   ```swift
   protocol ProtocolName {
@@ -1083,7 +1083,7 @@ let b: Double = 56.78
 
   > `get` , `set` 두 키워드의 유무가 속성의 가변성을 대변한다.
 
-- 프로토콜에서 메소드 선언하기
+- **프로토콜에서 메소드 선언하기**
 
   ```swift
   protocol ProtocolName {
@@ -1095,7 +1095,7 @@ let b: Double = 56.78
 
   > 메소드 헤드 부분만 선언한다.
 
-- 프로토콜에서 생성자 선언하기
+- **프로토콜에서 생성자 선언하기**
 
   ```swift
   protocol ProtocolName {
@@ -1105,7 +1105,7 @@ let b: Double = 56.78
   }
   ```
 
-- 프로토콜에서 서브스크립트 선언하기
+- **프로토콜에서 서브스크립트 선언하기**
 
   ```swift
   protocol ProtocolName {
@@ -1119,7 +1119,7 @@ let b: Double = 56.78
 
 > 특정 형식과 연관되지 않아 범용성이 높은 코드를 구현할 수 있다.
 
-- Syntax
+- **Syntax**
 
   ```swift
   func name<T>(parameter) -> Type {
@@ -1129,7 +1129,7 @@ let b: Double = 56.78
 
   > 기존의 함수선언 형태에서 `<T>` 가 추가되었다.
 
-- Type Constraints
+- **Type Constraints**
 
   - 제너릭 함수를 사용하면 함수 내에서 비교연산자 등의 연산자를 쉽게 사용할 수 없다. 타입에 제한이 없기 때문에 정의된 연산자들을 사용하지 못하기 때문이다. 이 때, Type Constraints 를 활용할 수 있다.
 
@@ -1138,11 +1138,11 @@ let b: Double = 56.78
     <TypeParameter: ProtocolName>
     ```
 
-- Specialized
+- **Specialized**
 
   - 동일한 함수가 있다면 파라미터에 들어오는 인자에 따라 결정된다.
 
-- Generic Types
+- **Generic Types**
 
   ```swift
   class Name<T> {
