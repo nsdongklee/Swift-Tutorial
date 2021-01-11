@@ -1,9 +1,5 @@
 # Summaries Basics of Swift
 
-### 기초 용어 일부
-
-
-
 ### 자료형 직접 선언하기
 
 ```swift
@@ -16,8 +12,6 @@ let weather: String = "warm"
 ```
 
 > `:` 기호와 함께 쓰고자 하는 자료형을 직접 선언할 수 있다.
-
-
 
 ### Type Inference 형식 추론
 
@@ -590,10 +584,10 @@ let b: Double = 56.78
 
     > Label 을 붙이고 위의 함수와 동일하게 변수명을 사용하여도 에러를 출력하지 않는다. *Argument Label*은 함수를 호출할 때 쓴다. *Wildcard Pattern* 을 사용하여 생략할 수 있다. 생략한 경우 값만 입력한다.
 
-- **Varidic Parameters**
+- **Varidic Parameters** 
 
   ```swift
-  // Ex.
+  // 가변 파라미터 Ex.
   ```
 
 ## Closures
@@ -702,14 +696,78 @@ let b: Double = 56.78
 > 스위프트에서 문자와 문자열 다루기. 문자열은 구조체 형식으로 구현되어있다.
 
 1. *String : 구조체로 구현되어있음(Swift String)*
+
 2. *NSString : 참조 형식으로 구현되어있음(Foundation String)*
 
+   ```swift
+   // String Type: 두 자료형은 호환되는 형식이지만 유니코드를 다루는 방식이 다르다.
+   var nsstr: NSString = "str"
+   let swiftStr: String = nsstr as String  // Type Casting 으로 변환할 수 있다.
+   ```
 
+- **Character in Swift**
+
+  ```swift
+  let c: Character = "C"
+  
+  // 빈 문자열은 공백을 넣고 선언해야한다.
+  let emptyChar: Character = " "
+  ```
+
+  > 스위프트에서 `Character` 타입으로 지정하고 싶으면, 무조건 타입지정을 해주어야 한다.
+
+- **MultiLine String Literal**
+
+  ```swift
+  let dummyStr = """
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  Nisl tincidunt eget nullam non. Quis hendrerit dolor magna eget est lorem
+  ipsum dolor sit. Volutpat odio facilisis mauris sit amet massa.
+  """
+  print(dummyStr)
+  ```
+
+  - `"""` 곁따옴표 3개를 붙여서 문장 양 끝에 넣는다.
+
+- **String Interpolation**
+
+  ```swift
+  // 일반적으로 Type Casting 및 '+' 연산자로 가능하다.
+  let size = 12.34
+  strInter = String(size) + "KB"
+  print(strInter)
+  
+  strInter = "\(size)KB"          // 문자열 보간법
+  
+  let e = "\(a) \(b)"
+  let f = a + " " + b							// + 연산자로 join 할 수 있다.
+  str += "!!"
+  ```
+
+  > 문자열 사이에 `\()` 를 삽입하여 보간법을 사용할 수 있다.
+
+- **Format Specifier 활용하기**
+
+  ```swift
+  // Format Specifier: %char
+  strInter = String(format: "%.1fKB", size)
+  ```
+
+  > C 언어의 `printf` 메소드 처럼 활용할 수 있다.
 
 - **String Indices**
 
   ```swift
+  let lang = "Swift"
+  let firstChar = lang[lang.startIndex]
+  let secCharIdx = lang.index(after: lang.startIndex)
+  // let lastChar = lang[lang.endIndex]
+  let lastCharIdx = lang.index(before: lang.endIndex)
+  let lastChar = lang[lastCharIdx]
   
+  print(firstChar)
+  print(lastChar)
   ```
 
   > 스위프트에서는 문자열 인덱스를 정수로 참조할 수 없다. 유니코드의 독립적인 형태로 문자열을 처리하기 때문이다.
@@ -722,15 +780,143 @@ let b: Double = 56.78
   
   // 새로운 메모리 공간에 저장하고 싶을 때
   let newStr = String(str2.prefix(3))
+  
+// 서브스크립트 문법으로 범위를 추출해 주세요.
+  let result = str[startIndex ..< endIndex]
+  print(result == "nisi ut aliquip")
+  
+  // 범위 연산자로 substring
+  let s = str2[str2.startIndex ..< str2.index(str2.startIndex, offsetBy: 2)]
+  ```
+  
+  > 스위프트의 이전 버전에서 Substring 을 진행하면 새로운 메모리 공간을 할당하여 저장했지만, 현재 버전은 원본 문자열을 공유한다.(Copy on Write Optimization)
+  
+- **Editing String**
+
+  ```swift
+  var appendStr = "Hello"
+  appendStr.append(" Swift")		// 변수가 저장된 메모리를 갱신
+  appendStr
+  
+  let temp = appendStr.appending(" ADD")	// 새로운 변수에 담아야 저장됨
+  temp
+  
+  "File size is... ".appendingFormat("%.1f", 12.3456)
   ```
 
-  > 스위프트의 이전 버전에서 Substring 을 진행하면 새로운 메모리 공간을 할당하여 저장했지만, 현재 버전은 원본 문자열을 공유한다.(Copy on Write Optimization)
+- **Using Emoticon in Swift**
 
+  ```swift
+  // 따봉 이모티콘 예시
+  // 유니코드: U+1F44D, UTF-8: F0 9F 91 8D
+  var thumbUp = "\u{1F44D}"
+  ```
 
+  > `cmd + ctrl + space` 으로 이모티콘들을 사용할 수 있다.
+
+- **String with Base**
+
+  ```swift
+  // 진법 변환된 문자열로 출력하기
+  let hex = String(123, radix: 16)
+  let oct = String(123, radix: 8)
+  let bin = String(123, radix: 2)
+  ```
+
+- **문자열 비교하기**
+
+  ```swift
+  let largeA = "Apple"
+  let smallA = "apple"
+  
+  largeA.compare(smallA) == .orderedSame
+  largeA.caseInsensitiveCompare(smallA) == .orderedSame
+  largeA.compare(smallA, options: [.caseInsensitive]) == .orderedSame
+  ```
+
+- **String Options**
+
+  - 문자열과 관련한 메소드 들을 사용할 때, 대소문자 무시, 리터럴 비교 등 다양한 옵션들을 파라미터로 줄 수 있다. 특히 여러 조건들을 부여할 수 있기 때문에 `[ ]` 안에 적어서 나열할 수 있다.
+
+    1.  *Case Intensive Option*
+
+    ```swift
+    "A".caseInsensitiveCompare("a") == .orderedSame
+    "A".compare("a", options: [.caseInsensitive]) == .orderedSame
+    ```
+
+    2. *Literal Option* 
+
+    ```swift
+    // Literal Option
+    let a = "\u{D55C}"  // "한"
+    let b = "\u{1112}\u{1161}\u{11AB}"  //조합형: "ㅎㅏㄴ"
+    // 있는 그대로(코드 유닛 단위)를 비교하고 싶을 때: Literal
+    a.compare(b, options: [.literal]) == .orderedSame
+    ```
+
+    3. 문자열 검색방향 지정 : *Backwards Option*('->' == leading, '<-' == Trailing)
+
+    ```swift
+    let eng = "Be Happy"
+    
+    if let range = eng.range(of: "p") {
+        eng.distance(from: eng.startIndex, to: range.lowerBound)
+    }
+    
+    if let range = eng.range(of: "p", options: [.backwards]) {
+        eng.distance(from: eng.startIndex, to: range.lowerBound)
+    }
+    ```
+
+    > 옵션에 따라 검색방향이 다르기 때문에 다른 인덱스 결과가 나온다.
+
+    4. *Anchored Option*
+
+    ```
+    
+    ```
+
+    5. *Numeric Option*
+
+    ```swift
+    let file9 = "file9.txt"
+    let file10 = "file10.txt"
+    file9 < file10
+    
+    file9.compare(file10) == .orderedAscending		// false
+    file9.compare(file10, options: [.numeric]) == .orderedAscending		// true
+    ```
+
+    > 문자열 내에서 숫자 크기 그대로 비교하기 위해서는 해당 옵션을 주어야한다.
+
+    6. 발음기호 처리 : *Diacritic Insensitive*
+
+    ```swift
+    let aa = "Cafe"
+    let ab = "Cafè"
+    
+    aa == ab
+    aa.compare(ab, options: [.diacriticInsensitive]) == .orderedSame
+    ```
+
+    7. *Forced Ordering Option(강제 정렬)*
+    8. *Regular Expression(정규표현식)*
+
+    ```swift
+    let emailPattern = "([0-9a-zA-Z_-]+)@([0-9a-zA-Z_-]+)(\\.[0-9a-zA-Z_-]+){1,2}"
+    let emailAddr = "user@example.com"
+    
+    if let _ = emailAddr.range(of: emailPattern) {
+        print("found pattern")
+    } else {
+        print("not found")
+    }
+    ```
 
 ## Collection
 
-> .
+> 스위프트에서 컬렉션 타입은 지정된 타입의 데이터들의 묶음이다. 지정된 타입이라고 하는 이유는 컬렉션에 해당되는 타입들이 모두 제네릭 컬렉션으로 구현되어 있기 때문이다.
 
 - **Foundation Collection 과 Swift Collection 의 비교**
 
