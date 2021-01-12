@@ -966,14 +966,17 @@ let b: Double = 56.78
 
 - **Iterating Collections**
 
-### Enumeration
+## Enumeration
 
 열거형은 독립적인 자료형으로 사용된다. 코드의 가독성과 안정성이 높아진다.
 
 - Syntax
 
   ```swift
-  
+  enum TypeName: Type {
+    case variable
+    // ...
+  }
   ```
 
 - Raw values
@@ -986,8 +989,37 @@ let b: Double = 56.78
 
   - 내부에 또 다른 값인 원시값은 필수가 아니지만 필요할 때가 있다.
   - `RawValueType` : 원시값의 자료형을 지정. `String`, `Character`, `Number Types` 만 지정할 수 있다.
+  
+- 열거 자료형을 참조하기
 
-### Structure And Class
+  ```swift
+  enum Align: Int {    // 원시값을 가지는 열거형 선언
+      case left
+      case right
+      case center
+  }
+  
+  Align.left.rawValue
+  Align.right.rawValue
+  Align.center.rawValue
+  
+  Align(rawValue: 0)
+  Align(rawValue: 20)
+  ```
+
+- 주의할 점
+
+  ```swift
+  Alignment.center
+  var textAlignment = Alignment.center
+  textAlignment = .left   // 앞에서 이미 열거형 변수로 저장, 생략하고 dot부터 시작해도 된다.
+  ```
+
+  
+
+## Structure And Class
+
+> 구조체는 값 형식이며, 클래스는 참조형식이다.
 
 - **Syntax**, Structure
 
@@ -1084,7 +1116,7 @@ let b: Double = 56.78
 
 - **Type Property**
 
-- Self & Super
+- **Self & Super**
 
   - `self` 는 직접 선언하지 않고, 자동 추가된다.
 
@@ -1109,7 +1141,7 @@ let b: Double = 56.78
 
 ## Inheritance And Polynomism
 
-> asd
+> 클래스에서 상속과 관련하여 정리
 
 ### Inheritance
 
@@ -1126,7 +1158,26 @@ let b: Double = 56.78
 - **Overriding(재정의)**
 
   ```swift
+  class Figure {
+      var name = "Unknown"
+      init(name: String) {
+          self.name = name
+      }
+      func draw() {
+          print("draw \(name)")
+      }
+  }
   
+  // 상속할 클래스 이름을 지정
+  class Circle: Figure {
+      var radius = 0.0
+      
+      // Super class 에 있는 함수와 동일한 함수를 오버라이딩
+      override func draw() {
+          super.draw()    // 오버라이딩 메소드 내부에서 함수를 실행하려고 할 때
+          print("🐙")
+      }
+  }
   ```
 
   > Super Class 로 부터 상속한 멤버를 재정의 하는 방법
