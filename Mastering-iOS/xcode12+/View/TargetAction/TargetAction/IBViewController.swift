@@ -25,8 +25,19 @@ import UIKit
 
 class IBViewController: UIViewController {
     
+    // 타켓-액션 매커니즘으로 연결
+    @IBAction func test1(_ sender: Any) {
+    }
+    
+    @IBAction func test2() {
+    }
     
     
+    @IBAction func test3(_ sender: Any, forEvent event: UIEvent) {
+    }
+    
+    @IBAction func sliderChanged(_ sender: Any) {
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         

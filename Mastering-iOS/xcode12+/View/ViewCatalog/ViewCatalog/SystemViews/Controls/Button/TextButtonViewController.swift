@@ -30,6 +30,12 @@ class TextButtonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //btn.titleLabel?.text = "Hello"
+        //btn.titleLabel?.textColor = .systemRed
+        btn.setTitle("Hello", for: .normal)
+        btn.setTitle("Haha", for: .highlighted)
+        btn.setTitleColor(.systemRed, for: .normal)
+        btn.titleLabel?.backgroundColor = .systemYellow
         
     }
 }

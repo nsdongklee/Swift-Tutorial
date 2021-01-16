@@ -36,7 +36,19 @@ class ButtonStateViewController: UIViewController {
     }
     
     @IBAction func stateChanged(_ sender: UISegmentedControl) {
-        
+        switch sender.selectedSegmentIndex {
+        case 0:
+            btn.isEnabled = true
+        case 1:
+            btn.isHighlighted.toggle()
+        case 2:
+            btn.isSelected.toggle()
+        case 3:
+            btn.isEnabled = false
+        default:
+            break
+        }
+        report(btn)
     }
     
     
