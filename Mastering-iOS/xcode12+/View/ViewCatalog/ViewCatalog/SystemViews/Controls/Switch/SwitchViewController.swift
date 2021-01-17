@@ -32,6 +32,7 @@ class SwitchViewController: UIViewController {
     
     
     @IBAction func toggle(_ sender: Any) {
+        testSwitch.setOn(!testSwitch.isOn, animated: true)
         
     }
     
