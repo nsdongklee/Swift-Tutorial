@@ -26,9 +26,22 @@ import UIKit
 class AlertViewController: UIViewController {
     
     @IBAction func show(_ sender: Any) {
+        let controller = UIAlertController(title: "Hello", message: "Have a nice day :)", preferredStyle: .alert)
         
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in print(action.title)}
+        controller.addAction(okAction)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in print(action.title)}
+        controller.addAction(cancelAction)
+        
+        let destructiveAction = UIAlertAction(title: "Destructive", style: .destructive) { (action) in print(action.title)}
+        controller.addAction(destructiveAction)
+        
+        controller.preferredAction = okAction
+        // 경고창을 화면에 표시할 때
+        present(controller, animated: true, completion: nil)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
