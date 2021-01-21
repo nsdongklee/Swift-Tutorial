@@ -28,10 +28,21 @@
 
 import Foundation
 
+
+// 날짜별 파싱
 let str = "2017-09-02T09:30:00Z"
 let formatter = DateFormatter()
 
+// 형식끼리 ' 로 나누어 주어야함(파싱)
+formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
 
+if let date = formatter.date(from: str) {
+    formatter.dateStyle = .full
+    formatter.timeStyle = .full
+    print(formatter.string(from: date))
+} else {
+    print("Invalid format")
+}
 
 
 

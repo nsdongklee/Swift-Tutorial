@@ -36,12 +36,12 @@ let formatter = DateFormatter()
 formatter.dateStyle = .full
 formatter.timeStyle = .full
 
+print(formatter.string(from: now))
+
 formatter.amSymbol = am
 formatter.pmSymbol = pm
 
-print(formatter.string(from: now))
-
-
+formatter.weekdaySymbols = weekdaySymbols
 
 print(formatter.string(from: now))
 

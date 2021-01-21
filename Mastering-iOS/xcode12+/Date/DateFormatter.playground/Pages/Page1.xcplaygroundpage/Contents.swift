@@ -30,6 +30,21 @@ import UIKit
 let now = Date()
 print(now)
 
+// 새로운 날짜포맷 인스턴스 생성
+let formatter = DateFormatter()
 
+formatter.dateStyle = .full
+formatter.timeStyle = .medium
+
+formatter.locale = Locale(identifier: "ko_KR")
+
+var result = formatter.string(from: now)
+print(result)
+
+// 파리미터로 사용하는 날짜가 옵셔널이라면
+formatter.string(for: now)
+
+// 반복적인게 아니라면 클래스의 메소드를 사용할 수 있음
+DateFormatter.localizedString(from: now, dateStyle: .long, timeStyle: .short)
 
 //: [Next](@next)

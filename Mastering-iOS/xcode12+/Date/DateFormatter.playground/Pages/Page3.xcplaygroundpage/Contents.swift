@@ -37,10 +37,16 @@ formatter.locale = Locale(identifier: "ko_KR")
 formatter.dateStyle = .full
 formatter.timeStyle = .none
 
+// 날짜 포맷 비교(>> "어제 오늘 내일")
 print(formatter.string(from: now))
 print(formatter.string(from: yesterday))
 print(formatter.string(from: tomorrow))
 
+formatter.doesRelativeDateFormatting = true
+
+print(formatter.string(from: now))
+print(formatter.string(from: yesterday))
+print(formatter.string(from: tomorrow))
 
 
 //: [Next](@next)
