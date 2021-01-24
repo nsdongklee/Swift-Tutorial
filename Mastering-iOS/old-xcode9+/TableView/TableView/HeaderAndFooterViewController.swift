@@ -31,6 +31,8 @@ class SectionHeaderAndFooterViewController: UIViewController {
    override func viewDidLoad() {
       super.viewDidLoad()
       
+    // Nib 파일 없으면 헤더 등록을 클래스로 해야함
+    listTableView.register(UITableViewHeaderFooterView.self, forCellReuseIdentifier: "header")
    }
 }
 
@@ -52,10 +54,51 @@ extension SectionHeaderAndFooterViewController: UITableViewDataSource {
       
       return cell
    }
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        // 타이틀 분류별로 헤더가 상단에 고정되며 스크롤 된다.
+//        return list[section].title
+//    }
+    
 }
 
 extension SectionHeaderAndFooterViewController: UITableViewDelegate {
-  
+    
+    // 커스텀 헤더를 선언
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> UIView? {
+        
+        let headerView = tableView.dequeueReusableCell(withIdentifier: "header")
+        headerView?.textLabel?.text = list[section].title
+        headerView?.detailTextLabel?.text = "Lorem Ipsum"
+        
+        //headerView?.backgroundColor = UIColor.darkGray
+        
+        // 헤더의 색깔을 커스텀 하기위한 인스턴스
+        let v = UIView(frame: .zero)
+        v.backgroundColor = UIColor.darkGray
+        v.isUserInteractionEnabled = false
+        headerView?.backgroundView = v
+        
+        
+        // 컬러와 정렬이 적용되지 않음을 알 수 있다.
+        headerView?.textLabel?.textColor = UIColor.white
+        headerView?.textLabel?.textAlignment = .center
+        
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView: UIView, forSection section: Int) {
+        if let headerView = view as? UITableViewHeaderFooterView {
+//            if headerView.backgroundView == nil {
+//                let v = UIView(frame: .zero)
+//                v.backgroundColor = UIColor.darkGray
+//                v.isUserInteractionEnabled = false
+//                headerView.backgroundView = v
+            headerView.backgroundView?.backgroundColor = UIColor.darkGray
+        
+            headerView.textLabel?.textColor = UIColor.white
+            headerView.textLabel?.textAlignment = .center
+        }
+    }
 }
 
 

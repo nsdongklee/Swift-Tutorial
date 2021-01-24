@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2324DAC525BD4F3200387036 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2324DAC425BD4F3200387036 /* SwitchTableViewCell.swift */; };
 		2324DAC825BD75D500387036 /* CustomAccessoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2324DAC725BD75D500387036 /* CustomAccessoryTableViewCell.swift */; };
+		23B2984B25BDAC2800BB69A5 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B2984A25BDAC2800BB69A5 /* TableViewCell.swift */; };
+		23B2984E25BDB03600BB69A5 /* SharedCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23B2984D25BDB03600BB69A5 /* SharedCustomCell.xib */; };
 		AA0880E420EEA136004BCAEA /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0880E320EEA136004BCAEA /* Products.swift */; };
 		AA0880E620EEA301004BCAEA /* SingleSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0880E520EEA301004BCAEA /* SingleSelectionViewController.swift */; };
 		AA0880E820EEDEE5004BCAEA /* MultipleSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0880E720EEDEE5004BCAEA /* MultipleSelectionViewController.swift */; };
@@ -41,6 +43,8 @@
 /* Begin PBXFileReference section */
 		2324DAC425BD4F3200387036 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		2324DAC725BD75D500387036 /* CustomAccessoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAccessoryTableViewCell.swift; sourceTree = "<group>"; };
+		23B2984A25BDAC2800BB69A5 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		23B2984D25BDB03600BB69A5 /* SharedCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SharedCustomCell.xib; sourceTree = "<group>"; };
 		AA0880E320EEA136004BCAEA /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		AA0880E520EEA301004BCAEA /* SingleSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSelectionViewController.swift; sourceTree = "<group>"; };
 		AA0880E720EEDEE5004BCAEA /* MultipleSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSelectionViewController.swift; sourceTree = "<group>"; };
@@ -131,11 +135,13 @@
 				AAE2BD3120EFF3FC00FD64F1 /* HeaderFooterViewViewController.swift */,
 				AA0880E520EEA301004BCAEA /* SingleSelectionViewController.swift */,
 				AA0880E720EEDEE5004BCAEA /* MultipleSelectionViewController.swift */,
+				23B2984A25BDAC2800BB69A5 /* TableViewCell.swift */,
 				AA0880E920EEF5B4004BCAEA /* EditModeViewController.swift */,
 				AA0880EB20EF05CB004BCAEA /* RowActionViewController.swift */,
 				AA0880EF20EF15F8004BCAEA /* SwipeActionViewController.swift */,
 				AA0880ED20EF0BA6004BCAEA /* ReorderingViewController.swift */,
 				AAE2BD2D20EFC84D00FD64F1 /* PrefetchingViewController.swift */,
+				23B2984D25BDB03600BB69A5 /* SharedCustomCell.xib */,
 				AACF69FF20DA448300DE209C /* Main.storyboard */,
 				AACF6A0220DA448400DE209C /* Assets.xcassets */,
 				AACF6A0420DA448400DE209C /* LaunchScreen.storyboard */,
@@ -205,6 +211,7 @@
 				AACF6A0620DA448400DE209C /* LaunchScreen.storyboard in Resources */,
 				AACF6A0320DA448400DE209C /* Assets.xcassets in Resources */,
 				AACF6A0120DA448300DE209C /* Main.storyboard in Resources */,
+				23B2984E25BDB03600BB69A5 /* SharedCustomCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +234,7 @@
 				AA62FF7120EE5A9200C27EF0 /* SectionIndexViewController.swift in Sources */,
 				AAE2BD3220EFF3FC00FD64F1 /* HeaderFooterViewViewController.swift in Sources */,
 				AA5016F220EC098D00F82883 /* CustomCellViewController.swift in Sources */,
+				23B2984B25BDAC2800BB69A5 /* TableViewCell.swift in Sources */,
 				AA871A4520E331EA004E2E8B /* SeparatorViewController.swift in Sources */,
 				2324DAC525BD4F3200387036 /* SwitchTableViewCell.swift in Sources */,
 				AA7CDBAB20ED8DB3004EFB9C /* HeaderAndFooterViewController.swift in Sources */,
