@@ -30,8 +30,17 @@ class SeparatorViewController: UIViewController {
    
    override func viewDidLoad() {
       super.viewDidLoad()
-      
-      
+    
+    // 직접 속성 제어 가능
+    listTableView.separatorStyle = .singleLine
+    listTableView.separatorColor = UIColor.blue
+    listTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    
+    if #available(iOS 11.0, *) {
+    listTableView.separatorInsetReference = .fromCellEdges
+    } else {
+        // fallback on earlier ver
+    }
    }
 }
 
@@ -43,6 +52,11 @@ extension SeparatorViewController: UITableViewDataSource {
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
       cell.textLabel?.text = list[indexPath.row % list.count]
+    if indexPath.row == 1 {
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 0)
+    } else if indexPath.row == 2 {
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 30)
+    }
       return cell
    }
 }

@@ -29,8 +29,20 @@ class TableViewCellViewController: UIViewController {
    override func viewDidLoad() {
       super.viewDidLoad()
       
+    // listTableview.visible
       
    }
+    
+    // 화면 전환 직전 호출
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let cell = sender as? UITableViewCell {
+//            if let indexPath = listTableView.indexPath(for: cell) {
+//                if let vc = segue.destination as? DetailViewController {
+//                    vc.value = list[indexPath.roww]
+//                }
+//            }
+//        }
+//    }
 }
 
 
@@ -42,6 +54,7 @@ extension TableViewCellViewController: UITableViewDataSource {
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
       cell.textLabel?.text = list[indexPath.row]
+    cell.imageView?.image = UIImage(named: "star")
       return cell
    }
 }
@@ -50,22 +63,20 @@ extension TableViewCellViewController: UITableViewDataSource {
 extension TableViewCellViewController: UITableViewDelegate {
    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       
+    // 해당 위치 클릭
+    if let cell = tableView.cellForRow(at: indexPath) {
+        print(cell.textLabel?.text)
    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row % 2 == 0 {
+            cell.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
+        } else {
+            cell.backgroundColor = UIColor.white
+        }
+        
+        //cell.backgroundView
+        //cell.selectedBackgroundView
+        //cell.multipleSelectionBackgroundView
+    }
+}

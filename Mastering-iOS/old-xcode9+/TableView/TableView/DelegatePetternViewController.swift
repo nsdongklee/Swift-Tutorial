@@ -33,6 +33,29 @@ class DelegatePetternViewController: UIViewController {
 }
 
 
+extension DelegatePetternViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // 로그 출력
+        print("#1", #function)
+        
+        // 섹션에 표시할 셀 수
+        return list.count
+        //return 100
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("#2", #function, indexPath.row)
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        cell.textLabel?.text = "\(indexPath.section) - \(indexPath.row)"
+        
+        return cell
+    }
+    
+    
+}
+
 
 
 

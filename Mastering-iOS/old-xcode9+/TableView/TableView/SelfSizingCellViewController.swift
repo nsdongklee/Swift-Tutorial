@@ -30,7 +30,10 @@ class SelfSizingCellViewController: UIViewController {
    
    override func viewDidLoad() {
       super.viewDidLoad()
-
+    
+    // 오토매틱을 체킹한 것과 동일
+    listTableView.rowHeight = UITableViewAutomaticDimension
+    listTableView.estimatedRowHeight = UITableViewAutomaticDimension
    }
 }
 
