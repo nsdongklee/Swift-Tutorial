@@ -53,7 +53,43 @@ extension SwipeActionViewController: UITableViewDataSource {
 
 @available(iOS 11.0, *)
 extension SwipeActionViewController: UITableViewDelegate {
-   
+    
+    // 왼쪽 스와이프
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let unreadAction = UIContextualAction(style: .normal, title: "Unread") { (action, view, completion) in
+            completion(true)
+        }
+        unreadAction.backgroundColor = UIColor.blue
+        unreadAction.image = UIImage(named: "mail")
+        
+        let configuration = UISwipeActionsConfiguration(actions: [unreadAction])
+        return configuration
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {
+            (action, view, completion) in
+            completion(true)
+        }
+        deleteAction.image = UIImage(named: "trash")
+        
+        let flagAction = UIContextualAction(style: .normal, title: "Flag") {
+            (action, view, completion) in
+            completion(true)
+        }
+        flagAction.image = UIImage(named: "flag")
+        flagAction.backgroundColor = UIColor.orange
+        
+        let menuAction = UIContextualAction(style: .normal, title: "Etc") {
+            (action, view, completion) in
+            completion(true)
+        }
+        menuAction.image = UIImage(named: "more")
+        
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, flagAction, menuAction])
+        configuration.performsFirstActionWithFullSwipe = true
+        return configuration
+    }
 }
 
 

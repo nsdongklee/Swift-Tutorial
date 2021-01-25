@@ -31,7 +31,7 @@ class EditModeViewController: UIViewController {
    var selectedList = [String]()
    
    @objc func toggleEditMode(_ sender: UISwitch) {
-      
+    listTableView.setEditing(sender.isOn, animated: true)
    }
    
    @objc func emptySelectedList() {
@@ -43,7 +43,8 @@ class EditModeViewController: UIViewController {
       
       editingSwitch = UISwitch(frame: .zero)
       editingSwitch.addTarget(self, action: #selector(toggleEditMode(_:)), for: .valueChanged)
-      
+      // 스위치 초기값
+    editingSwitch.isOn = listTableView.isEditing
       let deleteButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(emptySelectedList))
       deleteButton.tintColor = UIColor.red
       
@@ -93,11 +94,54 @@ extension EditModeViewController: UITableViewDataSource {
          return nil
       }
    }
+    // 편집모드로 사용할 수 있게 해주는 메소드
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .insert:
+            let target = productList[indexPath.row]
+            let insertIndexPath = IndexPath(row: selectedList.count, section: 0)
+            selectedList.append(target)
+            productList.remove(at: indexPath.row)
+            
+            listTableView.beginUpdates()
+            listTableView.insertRows(at: [insertIndexPath], with: .automatic)
+            listTableView.deleteRows(at: [indexPath], with: .automatic)
+            listTableView.endUpdates()
+            
+        case .delete:
+            let target = selectedList[indexPath.row]
+            let insertIndexPath = IndexPath(row: productList.count, section: 1)
+            productList.append(target)
+            selectedList.remove(at: indexPath.row)
+            
+            listTableView.endUpdates()
+            listTableView.insertRows(at: [insertIndexPath], with: .automatic)
+            listTableView.deleteRows(at: [indexPath], with: .automatic)
+            listTableView.beginUpdates()
+        default:
+            break
+        }
+    }
 }
 
 
 extension EditModeViewController: UITableViewDelegate {
-   
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        
+        switch indexPath.row {
+        case 0:
+            return .delete
+        case 1:
+            return .insert
+        default:
+            return .none
+        }
+    }
 }
 
 

@@ -83,11 +83,14 @@ extension HeaderFooterViewViewController: UISearchBarDelegate {
    }
    
    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-      
+    listTableView.tableFooterView = resultLabel
    }
    
+    // 검색 종료후 호출
    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-      
+    searchBar.text = nil
+    resultLabel.text = "0 result(s) found"
+    listTableView.tableFooterView = nil
    }
    
    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

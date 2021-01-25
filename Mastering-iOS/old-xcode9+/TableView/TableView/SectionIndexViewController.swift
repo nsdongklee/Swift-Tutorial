@@ -31,6 +31,11 @@ class SectionIndexViewController: UIViewController {
    override func viewDidLoad() {
       super.viewDidLoad()
       
+    listTableView.sectionIndexColor = UIColor.white
+    listTableView.sectionIndexBackgroundColor = UIColor.lightGray
+    
+    // 드래그 할 때 색깔
+    listTableView.sectionIndexTrackingBackgroundColor = UIColor.darkGray
 
    }
 }
@@ -56,6 +61,15 @@ extension SectionIndexViewController: UITableViewDataSource {
    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
       return list[section].title
    }
+    
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        // 타이틀만 뽑은 리턴값(오른쪽 옆에 첫글자 인덱싱 하는 방법)
+        //return list.map { $0.title }
+        
+        // 표시되는 타이틀을 절반으로 줄임
+        return stride(from: 0, to: list.count, by: 2).map { list[$0].title }
+        //return index * 2
+    }
 }
 
 

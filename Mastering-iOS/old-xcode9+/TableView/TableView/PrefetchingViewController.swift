@@ -28,6 +28,9 @@ class PrefetchingViewController: UIViewController {
    
    lazy var refreshControl: UIRefreshControl = { [weak self] in
       let control = UIRefreshControl()
+    
+    control.tintColor = self?.view.tintColor
+    
       return control
    }()
    
@@ -41,6 +44,9 @@ class PrefetchingViewController: UIViewController {
          
          DispatchQueue.main.async {
             strongSelf.listTableView.reloadData()
+            
+            // 해당 코드를 입력해야 리프레시가 끝남
+            strongSelf.listTableView.refreshControl?.endRefreshing()
          }
       }
    }
@@ -51,9 +57,31 @@ class PrefetchingViewController: UIViewController {
    override func viewDidLoad() {
       super.viewDidLoad()
       
+    listTableView.prefetchDataSource = self
+    
+    listTableView.refreshControl = refreshControl
+    refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
    }
 }
 
+extension PrefetchingViewController: UITableViewDataSourcePrefetching {
+    
+    //
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            downloadImage(at: indexPath.row)
+        }
+        print(#function, indexPaths)
+    }
+    
+    // prefetching 대상에서 제외된 셀이 있을 때마다 호출
+    func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
+        print(#function, indexPaths)
+        for indexPath in indexPaths {
+            cancelDownload(at: indexPath.row)
+        }
+    }
+}
 
 
 extension PrefetchingViewController: UITableViewDataSource {

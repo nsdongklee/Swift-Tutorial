@@ -91,11 +91,63 @@ extension ReorderingViewController: UITableViewDataSource {
          return nil
       }
    }
+    
+    // 셀 옮길 수 있도록 전환
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    // 충돌하는 여백 제거
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    // 이동 후 드롭할 위치. 실제 데이터의 위치를 바꾸어줌
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        // 셀 배열을 새롭게 바꾸어 주어야한다.
+        
+        // 이동 대상 저장
+        var target: String? = nil
+        
+        switch sourceIndexPath.section {
+        case 0:
+            target = firstList.remove(at: sourceIndexPath.row)
+        case 1:
+            target = secondList.remove(at: sourceIndexPath.row)
+        case 2:
+            target = thirdList.remove(at: sourceIndexPath.row)
+        default:
+            break
+        }
+        
+        guard let item = target else { return }
+        
+        switch destinationIndexPath.section {
+        case 0:
+            firstList.insert(item, at: destinationIndexPath.row)
+        case 1:
+            secondList.insert(item, at: destinationIndexPath.row)
+        case 2:
+            thirdList.insert(item, at: destinationIndexPath.row)
+        default:
+            break
+        }
+    }
 }
 
 
 extension ReorderingViewController: UITableViewDelegate {
    
+    //
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .none
+    }
+    
+    // 셀을 드래그한다음 원하는 위치를 전달할 때
+    func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        // ...
+        return proposedDestinationIndexPath
+    }
 }
 
 
