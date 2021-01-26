@@ -34,7 +34,10 @@ class SelfSizingCellViewController: UIViewController {
    override func viewDidLoad() {
       super.viewDidLoad()
       
-      
+      // 셀프사이징 구현
+    if let layout = listCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+        layout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
+    }
    }
 }
 

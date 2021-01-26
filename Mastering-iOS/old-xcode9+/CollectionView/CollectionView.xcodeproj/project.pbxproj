@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23DD699525C034F700E557E1 /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DD699425C034F700E557E1 /* ColorCollectionViewCell.swift */; };
 		AA5B472321078E58007AC6A8 /* CustomCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5B472221078E58007AC6A8 /* CustomCellViewController.swift */; };
 		AA5B47272107BCFA007AC6A8 /* SupplementaryViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5B47262107BCFA007AC6A8 /* SupplementaryViewViewController.swift */; };
 		AA87B3432108F69700BFF504 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA87B3422108F69700BFF504 /* SelectionViewController.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		23DD699425C034F700E557E1 /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		AA5B472221078E58007AC6A8 /* CustomCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellViewController.swift; sourceTree = "<group>"; };
 		AA5B47262107BCFA007AC6A8 /* SupplementaryViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementaryViewViewController.swift; sourceTree = "<group>"; };
 		AA87B3422108F69700BFF504 /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				AA5B47262107BCFA007AC6A8 /* SupplementaryViewViewController.swift */,
 				AA87B3422108F69700BFF504 /* SelectionViewController.swift */,
 				AA87B344210928F000BFF504 /* EditViewController.swift */,
+				23DD699425C034F700E557E1 /* ColorCollectionViewCell.swift */,
 				AA87B34621092D8200BFF504 /* EditingHeaderCollectionReusableView.swift */,
 				AA87B34821096E8900BFF504 /* ReorderingViewController.swift */,
 				AA87B34C2109745800BFF504 /* PrefetchingViewController.swift */,
@@ -184,6 +187,7 @@
 				AAB9670E2105493B0078FCA8 /* SelfSizingCellViewController.swift in Sources */,
 				AA87B34D2109745800BFF504 /* PrefetchingViewController.swift in Sources */,
 				AA87B345210928F000BFF504 /* EditViewController.swift in Sources */,
+				23DD699525C034F700E557E1 /* ColorCollectionViewCell.swift in Sources */,
 				AA87B34B210973D200BFF504 /* Landscape.swift in Sources */,
 				AA87B34721092D8200BFF504 /* EditingHeaderCollectionReusableView.swift in Sources */,
 				AAB966FC210543350078FCA8 /* AppDelegate.swift in Sources */,
