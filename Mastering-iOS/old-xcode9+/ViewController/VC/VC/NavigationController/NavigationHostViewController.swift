@@ -25,7 +25,14 @@ import UIKit
 class NavigationHostViewController: UIViewController {
    
    @IBAction func presentNavigationController(_ sender: Any) {
-      
+      // 루트뷰 생성
+    guard let rootVC = storyboard?.instantiateViewController(withIdentifier: "FirstViewController") else {
+        return
+    }
+    let nav = UINavigationController(rootViewController:  rootVC)
+    
+    // 모달 방식으로
+    present(nav, animated: true, completion: nil)
    }
    
    

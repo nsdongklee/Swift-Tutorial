@@ -28,6 +28,39 @@ class LandscapeModalViewController: UIViewController {
    @IBOutlet weak var closeButton: UIButton!
    @IBOutlet weak var playerView: PlayerView!
    
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return .landscapeLeft
+    }
+    
+    // 사이즈 클래스를 통해서 뷰의 사이즈를 대략적으로 파악
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
+        
+        print(newCollection.verticalSizeClass.description)
+        
+        switch newCollection.verticalSizeClass {
+        case .regular:
+            closeButton.backgroundColor = UIColor.red.withAlphaComponent(0.5)
+        default:
+            closeButton.backgroundColor = UIColor.green.withAlphaComponent(0.5)
+        }
+    }
+    
+    // 가로인지 세로인지 확인하려면 루트뷰의 사이즈를 명확하게 알아야한다.
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        
+        
+        coordinator.animate(alongsideTransition: { (context) in
+            if size.height > size.width {
+                self.closeButton.backgroundColor = UIColor.red.withAlphaComponent(0.5)
+            } else {
+                self.closeButton.backgroundColor = UIColor.green.withAlphaComponent(0.5)
+            }
+        }, completion: nil)
+    }
+    
    override func viewDidLoad() {
       super.viewDidLoad()
       

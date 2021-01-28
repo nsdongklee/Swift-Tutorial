@@ -24,12 +24,17 @@ import UIKit
 
 class SecondViewController: UIViewController {
    
+    
+    // 코드로 직접구현하는 백버튼
    @IBAction func pop(_ sender: Any) {
-      
+    navigationController?.popViewController(animated: true)
    }
    
    @IBAction func pushThird(_ sender: Any) {
-      
+    guard  let thirdVC = storyboard?.instantiateViewController(withIdentifier: "ThirdViewController") else {
+        return
+    }
+    navigationController?.pushViewController(thirdVC, animated: true)
    }
    
    @objc func addRightButtons() {

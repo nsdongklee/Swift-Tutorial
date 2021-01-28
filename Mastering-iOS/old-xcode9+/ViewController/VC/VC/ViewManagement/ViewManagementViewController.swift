@@ -24,38 +24,65 @@ import UIKit
 
 class ViewManagementViewController: UIViewController {
    
-   var grayView: UIView?
+    @IBOutlet weak var redView: UIView!
+    
+    @IBOutlet weak var greenView: UIView!
+    
+    @IBOutlet weak var blueView: UIView!
+    
+    var grayView: UIView?
    
    func addRandomView() {
-      
+      let v = generateRandomView()
+    
+    // 루트뷰에 접근할때는 view 를 사용한다.
+    view.addSubview(v)
    }
    
    func insertRandomViewToBack() {
-      
+      // 특정위치에 view 추가
+    let v = generateRandomView()
+    view.insertSubview(v, at: 0)
    }
    
    func removeTopmostRandomView() {
-      
+      // 가장 앞에 표시된 랜덤뷰를 삭제, 맨 앞이 0
+    let topmostRandomView = view.subviews.reversed().first { $0.tag > 0 }
+    topmostRandomView?.removeFromSuperview()
    }
    
    func bringRedViewToFront() {
-      
+    // 서브뷰를 가장 앞쪽으로
+    view.bringSubview(toFront: redView)
    }
    
    func sendRedViewToBack() {
-      
+    view.sendSubview(toBack: redView)
    }
    
    func switchGreenViewWithBlueView() {
-      
+    // 파라미터로 서브뷰의 인덱스를 전달해야함
+    guard let greenViewIndex = view.subviews.index(of: greenView) else {
+        return
+    }
+    guard let blueViewIndex = view.subviews.index(of: blueView) else {
+        return
+    }
+    
+    // 파랑과 초록 뷰 위치교체
+    view.exchangeSubview(at: greenViewIndex, withSubviewAt: blueViewIndex)
    }
    
    func addGrayViewToRedView() {
-      
+      // 새로운 그레이뷰 추가
+    grayView = generateGrayView()
+    redView.addSubview(grayView!)
    }
    
    func moveGrayViewToRootView() {
-      
+    if let grayView = grayView {
+        view.addSubview(grayView)
+    }
    }
    
    override func viewDidLoad() {

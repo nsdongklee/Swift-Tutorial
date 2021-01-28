@@ -23,8 +23,17 @@
 import UIKit
 
 class InterfaceOrientationViewController: UIViewController {
-   
-   
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return [.landscapeLeft, .landscapeRight]
+    }
+    
+    // 디바이스가 회전할 때마다 자동전환 할지말지
+    override var shouldAutorotate: Bool {
+        return true
+    }
+    
+    
    override func viewDidLoad() {
       super.viewDidLoad()
       
