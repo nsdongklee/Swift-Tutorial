@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -76,7 +77,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="qwM-ih-rhH" kind="presentation" id="egM-Yb-KD8"/>
+                                            <segue destination="iAz-hI-tdd" kind="presentation" id="egM-Yb-KD8"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="tQf-w3-LTK" style="IBUITableViewCellStyleDefault" id="lr8-sc-G2t">
@@ -123,10 +124,33 @@
                         <viewLayoutGuide key="safeArea" id="HaK-rA-ZU2"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Customizing" largeTitleDisplayMode="always" id="TnR-cW-BYv">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="DWP-dA-IIX">
+                            <connections>
+                                <segue destination="5PA-pS-LZm" kind="show" id="IYp-lb-0HO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RDs-mj-aXh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1001" y="863"/>
+            <point key="canvasLocation" x="1940" y="862.21889055472275"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="KLC-U7-X3s">
+            <objects>
+                <viewController id="5PA-pS-LZm" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qks-QZ-XZT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="IDn-y9-czI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="xSj-mh-xbK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PQj-ov-ZfJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2666" y="862"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gd9-nK-QQw">
@@ -147,13 +171,13 @@
         <!--Navigation Controller-->
         <scene sceneID="oQA-jl-GLc">
             <objects>
-                <navigationController id="GQN-AL-cWU" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="GQN-AL-cWU" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="id8-zy-1Tg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="X3K-x7-DXC">
-                        <rect key="frame" x="0.0" y="-20" width="0.0" height="0.0"/>
+                        <rect key="frame" x="0.0" y="603" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
@@ -174,7 +198,11 @@
                         <viewLayoutGuide key="safeArea" id="JZ8-ad-E5j"/>
                         <color key="backgroundColor" red="0.45882352939999999" green="0.66274509800000003" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <toolbarItems/>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="C4P-mq-MUx"/>
+                        <barButtonItem title="Item" id="2DG-Mx-axk"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Whi-ae-Ohh"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="First Toolbar" id="HQy-aE-dWJ">
                         <barButtonItem key="rightBarButtonItem" title="Push" id="DCl-DQ-3Lw">
                             <connections>
@@ -285,7 +313,7 @@ using</string>
             </objects>
             <point key="canvasLocation" x="2041" y="-591"/>
         </scene>
-        <!--First View Controller-->
+        <!--First-->
         <scene sceneID="nKv-l6-0Qm">
             <objects>
                 <viewController storyboardIdentifier="FirstViewController" id="8OI-AX-WfQ" customClass="FirstViewController" customModule="VC" customModuleProvider="target" sceneMemberID="viewController">
@@ -334,13 +362,31 @@ using</string>
                             <constraint firstItem="VM0-6b-feJ" firstAttribute="bottom" secondItem="I9d-aS-Qgc" secondAttribute="bottom" constant="20" id="xsc-WO-dMi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="0tV-fU-L3I"/>
+                    <navigationItem key="navigationItem" title="First" id="0tV-fU-L3I">
+                        <barButtonItem key="backBarButtonItem" title="Go Back" id="kBY-rV-wZv"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="Kse-BE-34W"/>
+                        <rightBarButtonItems>
+                            <barButtonItem style="plain" id="5v7-R7-eTy">
+                                <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="fLp-JW-GAF">
+                                    <rect key="frame" x="308" y="12.5" width="51" height="31"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <connections>
+                                        <action selector="switchChanged:" destination="8OI-AX-WfQ" eventType="valueChanged" id="oNn-ym-Xqa"/>
+                                    </connections>
+                                </switch>
+                                <connections>
+                                    <action selector="switchChanged:" destination="8OI-AX-WfQ" id="C3b-zY-O6p"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" id="WzZ-Pb-lVK"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IZk-bO-4bb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3180" y="-591"/>
         </scene>
-        <!--Second View Controller-->
+        <!--Second-->
         <scene sceneID="GU4-5m-ISh">
             <objects>
                 <viewController storyboardIdentifier="SecondViewController" id="LcD-y8-VkC" customClass="SecondViewController" customModule="VC" customModuleProvider="target" sceneMemberID="viewController">
@@ -399,13 +445,13 @@ using</string>
                             <constraint firstItem="xHG-Hn-v0k" firstAttribute="centerX" secondItem="OX7-bU-BvG" secondAttribute="centerX" id="gDe-64-mjq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ec1-9p-3l2"/>
+                    <navigationItem key="navigationItem" title="Second" id="Ha6-SZ-WNs"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rdd-IB-krL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4028" y="-593"/>
         </scene>
-        <!--Third View Controller-->
+        <!--Third-->
         <scene sceneID="Oue-ta-pQd">
             <objects>
                 <viewController storyboardIdentifier="ThirdViewController" id="EIW-8B-anM" customClass="ThirdViewController" customModule="VC" customModuleProvider="target" sceneMemberID="viewController">
@@ -454,7 +500,7 @@ using</string>
                             <constraint firstItem="J6k-jV-XFn" firstAttribute="centerX" secondItem="gkJ-lA-UzP" secondAttribute="centerX" id="cXD-Si-HBz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="XXR-tT-hFp"/>
+                    <navigationItem key="navigationItem" title="Third" id="t6x-rj-RXG"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="01O-4O-G79" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -623,8 +669,42 @@ using</string>
             </objects>
             <point key="canvasLocation" x="6868" y="-591"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6WS-fm-iax">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" hidesBarsOnTap="YES" hidesBarsWhenVerticallyCompact="YES" id="iAz-hI-tdd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" shadowImage="shadow" backIndicatorImage="back" backIndicatorTransitionMaskImage="back-mask" id="hYc-pV-ggc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="labelColor"/>
+                        <color key="barTintColor" systemColor="systemPinkColor"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qwM-ih-rhH" kind="relationship" relationship="rootViewController" id="7As-Zv-gf6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rzJ-h7-CoL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1000.8" y="862.21889055472275"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="su5-hT-jax"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="back" width="32" height="32"/>
+        <image name="back-mask" width="32" height="32"/>
+        <image name="shadow" width="15.5" height="18.5"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

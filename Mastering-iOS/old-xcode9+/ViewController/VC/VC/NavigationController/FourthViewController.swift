@@ -31,8 +31,12 @@ class FourthViewController: UIViewController {
    
    override func viewDidLoad() {
       super.viewDidLoad()
-      
-      
+    
+    // 속성에 접근해서 네비게이션아이템 생성
+    navigationItem.title = "Fourth"
+    
+    // 바로 접근도 가능
+    title = "Fourth"
    }
 }
 

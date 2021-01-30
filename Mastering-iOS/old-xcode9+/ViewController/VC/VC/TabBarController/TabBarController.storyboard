@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cPb-JY-Gdc">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cPb-JY-Gdc">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YPV-HD-V97">
-                                <rect key="frame" x="53" y="250.5" width="268.5" height="166"/>
+                                <rect key="frame" x="53.5" y="250.5" width="268.5" height="166"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Id-SL-rQ1">
                                         <rect key="frame" x="0.0" y="0.0" width="268.5" height="86"/>
@@ -33,30 +31,33 @@ using</string>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="CzY-9t-bHm">
                                         <rect key="frame" x="0.0" y="106" width="268.5" height="60"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDY-9q-PSm">
-                                                <rect key="frame" x="0.0" y="0.0" width="124.5" height="60"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDY-9q-PSm">
+                                                <rect key="frame" x="0.0" y="0.0" width="124" height="60"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <state key="normal" title="Code"/>
                                                 <connections>
                                                     <action selector="presentTabBarController:" destination="cPb-JY-Gdc" eventType="touchUpInside" id="W86-vX-d7P"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ios-du-XYj">
-                                                <rect key="frame" x="144.5" y="0.0" width="124" height="60"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ios-du-XYj">
+                                                <rect key="frame" x="144" y="0.0" width="124.5" height="60"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <state key="normal" title="Segue"/>
+                                                <connections>
+                                                    <segue destination="n2a-aO-dlN" kind="presentation" id="d5D-ja-DCt"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="kyd-80-QuJ"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="YPV-HD-V97" firstAttribute="centerY" secondItem="cQP-x5-k6g" secondAttribute="centerY" id="gEy-KQ-Wqy"/>
                             <constraint firstItem="YPV-HD-V97" firstAttribute="centerX" secondItem="cQP-x5-k6g" secondAttribute="centerX" id="ohY-4F-KF3"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="kyd-80-QuJ"/>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
@@ -73,15 +74,15 @@ using</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wd5-sn-ETa">
-                                <rect key="frame" x="141.5" y="303.5" width="92.5" height="60"/>
+                                <rect key="frame" x="141.5" y="293.5" width="92.5" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gEg-hy-48D">
-                                <rect key="frame" x="123" y="373.5" width="128" height="70"/>
+                                <rect key="frame" x="123.5" y="363.5" width="128" height="70"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="weO-qi-9A5">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="weO-qi-9A5">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="30"/>
                                         <state key="normal" title="Select Second Tab">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -90,7 +91,7 @@ using</string>
                                             <action selector="selectSecondTab:" destination="f1R-mn-qzG" eventType="touchUpInside" id="qlc-ez-N4C"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAZ-qe-5FU">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAZ-qe-5FU">
                                         <rect key="frame" x="0.0" y="40" width="128" height="30"/>
                                         <state key="normal" title="Select Third Tab">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -102,6 +103,7 @@ using</string>
                                 </subviews>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="48n-r7-qGv"/>
                         <color key="backgroundColor" red="0.8784313725490196" green="0.18823529411764706" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Wd5-sn-ETa" firstAttribute="centerX" secondItem="DX5-xV-JnJ" secondAttribute="centerX" id="DBg-Tf-Nq8"/>
@@ -109,8 +111,8 @@ using</string>
                             <constraint firstItem="Wd5-sn-ETa" firstAttribute="centerY" secondItem="DX5-xV-JnJ" secondAttribute="centerY" id="b1n-Fm-jJI"/>
                             <constraint firstItem="gEg-hy-48D" firstAttribute="top" secondItem="Wd5-sn-ETa" secondAttribute="bottom" constant="10" id="fK5-36-fmw"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="48n-r7-qGv"/>
                     </view>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="6ij-Y0-Pmr"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dyp-hI-XR0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -125,19 +127,20 @@ using</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Second" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2i9-6u-ity">
-                                <rect key="frame" x="106" y="313.5" width="163" height="60"/>
+                                <rect key="frame" x="106" y="269" width="163" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="rVh-V0-ZMx"/>
                         <color key="backgroundColor" red="0.98431372549019602" green="0.89803921568627454" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="2i9-6u-ity" firstAttribute="centerY" secondItem="rVh-V0-ZMx" secondAttribute="centerY" id="1KU-h6-CcT"/>
                             <constraint firstItem="2i9-6u-ity" firstAttribute="centerX" secondItem="rVh-V0-ZMx" secondAttribute="centerX" id="9UP-To-4Ok"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="rVh-V0-ZMx"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Health" image="health_regular" landscapeImage="health_compact" badgeValue="New" id="Xa1-BJ-XS3"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lce-aR-ev3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -152,19 +155,20 @@ using</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Third" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cE-zv-QRq">
-                                <rect key="frame" x="133" y="313.5" width="110" height="60"/>
+                                <rect key="frame" x="132.5" y="269" width="110" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="iiv-nb-84H"/>
                         <color key="backgroundColor" red="0.36470588235294116" green="0.63921568627450975" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="5cE-zv-QRq" firstAttribute="centerY" secondItem="iiv-nb-84H" secondAttribute="centerY" id="hYS-eQ-TdN"/>
                             <constraint firstItem="5cE-zv-QRq" firstAttribute="centerX" secondItem="iiv-nb-84H" secondAttribute="centerX" id="xBn-c7-Zvd"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="iiv-nb-84H"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Setting" image="settings32pt" id="RUb-Mt-l3l"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nMH-zm-ZSH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -179,19 +183,20 @@ using</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fourth" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k8h-z0-NFT">
-                                <rect key="frame" x="118.5" y="303.5" width="138" height="60"/>
+                                <rect key="frame" x="118.5" y="293.5" width="138" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="aIW-wc-oCW"/>
                         <color key="backgroundColor" red="0.94509803921568625" green="0.59215686274509804" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="k8h-z0-NFT" firstAttribute="centerY" secondItem="dSu-4j-ZhE" secondAttribute="centerY" id="LaP-Hm-gTD"/>
                             <constraint firstItem="k8h-z0-NFT" firstAttribute="centerX" secondItem="dSu-4j-ZhE" secondAttribute="centerX" id="fFp-Dt-fLL"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="aIW-wc-oCW"/>
                     </view>
+                    <tabBarItem key="tabBarItem" systemItem="recents" id="iqS-nA-8QS"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aEM-0m-G1P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -206,19 +211,20 @@ using</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fifth" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RwG-OK-V7a">
-                                <rect key="frame" x="139.5" y="303.5" width="96" height="60"/>
+                                <rect key="frame" x="139.5" y="293.5" width="96" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="JnX-BA-pI4"/>
                         <color key="backgroundColor" red="0.41176470588235292" green="0.80784313725490198" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="RwG-OK-V7a" firstAttribute="centerY" secondItem="bdH-Ub-tfW" secondAttribute="centerY" id="17B-z7-trO"/>
                             <constraint firstItem="RwG-OK-V7a" firstAttribute="centerX" secondItem="bdH-Ub-tfW" secondAttribute="centerX" id="I8j-0B-0QQ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="JnX-BA-pI4"/>
                     </view>
+                    <tabBarItem key="tabBarItem" systemItem="contacts" id="GXN-Rl-rBT"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="anX-fG-JuG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -233,23 +239,50 @@ using</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sixth" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chQ-a0-FfF">
-                                <rect key="frame" x="133.5" y="303.5" width="108" height="60"/>
+                                <rect key="frame" x="133.5" y="293.5" width="108" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="geD-Wr-ShO"/>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.33725490196078434" blue="0.24313725490196078" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="chQ-a0-FfF" firstAttribute="centerX" secondItem="g5V-g3-1aQ" secondAttribute="centerX" id="BNU-Io-KUd"/>
                             <constraint firstItem="chQ-a0-FfF" firstAttribute="centerY" secondItem="g5V-g3-1aQ" secondAttribute="centerY" id="bv8-3p-vaO"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="geD-Wr-ShO"/>
                     </view>
+                    <tabBarItem key="tabBarItem" systemItem="history" id="2xg-8x-Vdu"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OJ5-G0-sOw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8129" y="166"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="WCy-3t-Bs9">
+            <objects>
+                <tabBarController id="n2a-aO-dlN" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionIndicatorImage="selection" itemPositioning="centered" id="7zt-iA-k0u">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="f1R-mn-qzG" kind="relationship" relationship="viewControllers" id="zlf-RK-hj9"/>
+                        <segue destination="BCW-gn-XCP" kind="relationship" relationship="viewControllers" id="ijl-qa-2zz"/>
+                        <segue destination="hJW-qc-27j" kind="relationship" relationship="viewControllers" id="uje-0j-yoo"/>
+                        <segue destination="Ivu-Zp-fwI" kind="relationship" relationship="viewControllers" id="JY8-yY-hTY"/>
+                        <segue destination="M2S-wK-0uZ" kind="relationship" relationship="viewControllers" id="5PV-ci-h4d"/>
+                        <segue destination="5iQ-gM-5KH" kind="relationship" relationship="viewControllers" id="QKI-jZ-w8C"/>
+                        <segue destination="GqT-Db-AUX" kind="relationship" relationship="viewControllers" id="OAh-61-B2T"/>
+                        <segue destination="58D-ND-u4m" kind="relationship" relationship="viewControllers" id="1eq-5K-HBm"/>
+                        <segue destination="1zb-DF-rPc" kind="relationship" relationship="viewControllers" id="ob3-eF-UOB"/>
+                        <segue destination="jeY-60-2nl" kind="relationship" relationship="viewControllers" id="1RP-mA-E6J"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QQC-d7-0Bt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7632" y="-907"/>
         </scene>
         <!--Seventh-->
         <scene sceneID="lWv-eS-XcK">
@@ -260,19 +293,20 @@ using</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seventh" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ERN-5T-zUM">
-                                <rect key="frame" x="99.5" y="303.5" width="176" height="60"/>
+                                <rect key="frame" x="100.5" y="293.5" width="174" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="c77-Gt-zF8"/>
                         <color key="backgroundColor" red="0.24705882352941178" green="0.67450980392156867" blue="0.79607843137254897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ERN-5T-zUM" firstAttribute="centerY" secondItem="j5r-cc-zp8" secondAttribute="centerY" id="Afa-be-gQ8"/>
                             <constraint firstItem="ERN-5T-zUM" firstAttribute="centerX" secondItem="j5r-cc-zp8" secondAttribute="centerX" id="XqJ-ig-COD"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="c77-Gt-zF8"/>
                     </view>
+                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="SIC-3l-Jl6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GIQ-bA-gJx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -287,19 +321,20 @@ using</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eighth" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FaI-sP-ZzA">
-                                <rect key="frame" x="119" y="303.5" width="137" height="60"/>
+                                <rect key="frame" x="119" y="293.5" width="137" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="yVR-54-BQi"/>
                         <color key="backgroundColor" red="0.69019607843137254" green="0.65098039215686276" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="FaI-sP-ZzA" firstAttribute="centerX" secondItem="W8A-D7-SBw" secondAttribute="centerX" id="ICm-7D-AsV"/>
                             <constraint firstItem="FaI-sP-ZzA" firstAttribute="centerY" secondItem="W8A-D7-SBw" secondAttribute="centerY" id="S7C-z4-ewl"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="yVR-54-BQi"/>
                     </view>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="2hy-Bu-NLj"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LWV-qy-ejp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -314,19 +349,20 @@ using</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ninth" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNl-cF-5Au">
-                                <rect key="frame" x="129.5" y="303.5" width="116" height="60"/>
+                                <rect key="frame" x="129.5" y="293.5" width="116" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="3Uu-by-REs"/>
                         <color key="backgroundColor" red="0.51764705882352935" green="0.16862745098039217" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="DNl-cF-5Au" firstAttribute="centerX" secondItem="ygs-xH-k4M" secondAttribute="centerX" id="OgS-qz-DhT"/>
                             <constraint firstItem="DNl-cF-5Au" firstAttribute="centerY" secondItem="ygs-xH-k4M" secondAttribute="centerY" id="vWu-jP-Fwv"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="3Uu-by-REs"/>
                     </view>
+                    <tabBarItem key="tabBarItem" systemItem="downloads" id="rgC-uf-o2S"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S5T-9l-lLo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -341,23 +377,30 @@ using</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tenth" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URp-Se-00z">
-                                <rect key="frame" x="128.5" y="303.5" width="119" height="60"/>
+                                <rect key="frame" x="128" y="293.5" width="119" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="9fq-F1-38U"/>
                         <color key="backgroundColor" red="1" green="0.90196078431372551" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="URp-Se-00z" firstAttribute="centerX" secondItem="HB6-xr-UNj" secondAttribute="centerX" id="Af8-EA-wQP"/>
                             <constraint firstItem="URp-Se-00z" firstAttribute="centerY" secondItem="HB6-xr-UNj" secondAttribute="centerY" id="MqH-AL-toQ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="9fq-F1-38U"/>
                     </view>
+                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="NTd-Ya-gQC"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mjs-nB-Jti" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="11150" y="173"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="health_compact" width="17" height="17"/>
+        <image name="health_regular" width="23" height="23"/>
+        <image name="selection" width="23" height="23"/>
+        <image name="settings32pt" width="32" height="32"/>
+    </resources>
 </document>

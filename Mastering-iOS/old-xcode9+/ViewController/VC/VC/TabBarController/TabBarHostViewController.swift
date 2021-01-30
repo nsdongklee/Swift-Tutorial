@@ -24,13 +24,21 @@ import UIKit
 
 class TabBarHostViewController: UIViewController {
    
+    // 탭바 컨트롤러를 활성화하려면 2개 이상이 있어야함
    @IBAction func presentTabBarController(_ sender: Any) {
-      
+    let firstVC = storyboard!.instantiateViewController(withIdentifier: "FirstTabViewController")
+    let secondVC = storyboard!.instantiateViewController(withIdentifier: "FirstTabViewController")
+    let thirdVC = storyboard!.instantiateViewController(withIdentifier: "FirstTabViewController")
+    
+    let tbc = UITabBarController()
+    tbc.viewControllers = [firstVC, secondVC, thirdVC]
+    
+    present(tbc, animated: true, completion: nil)
    }
    
    override func viewDidLoad() {
       super.viewDidLoad()
       
-      // Do any additional setup after loading the view.
+    
    }
 }

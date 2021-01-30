@@ -24,6 +24,26 @@ import UIKit
 
 class FirstViewController: UIViewController {
    
+    
+    @IBAction func switchChanged(_ sender: UISwitch) {
+        switch sender.isOn {
+        case true:
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+            if var list = navigationItem.rightBarButtonItems {
+                let btn = UIBarButtonItem(title: "Item", style: .plain, target: nil, action: nil)
+                list.append(btn)
+                navigationItem.rightBarButtonItems = nil
+            }
+        case false:
+            navigationItem.leftBarButtonItem = nil
+            
+            let list = navigationItem.rightBarButtonItems?.dropLast()
+            navigationItem.rightBarButtonItems = Array(list!)
+        default:
+            break
+        }
+    }
+    
     @IBAction func unwindToFirst(_ unwindSegue: UIStoryboardSegue) {
         let sourceViewController = unwindSegue.source
         // Use data from the view controller which initiated the unwind segue
@@ -42,7 +62,7 @@ class FirstViewController: UIViewController {
    override func viewDidLoad() {
       super.viewDidLoad()
       
-      
+    navigationItem.backBarButtonItem?.title = "Go Back"
    }
 }
 

@@ -26,8 +26,24 @@ class CustomizingViewController: UIViewController {
    
    override func viewDidLoad() {
       super.viewDidLoad()
-      
-            
+    
+    if #available(iOS 11.0, *) {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .automatic
+        
+        
+        // 속성관련, 키 밸류
+        var attrs = [NSAttributedStringKey: Any]()
+        attrs[.font] = UIFont.boldSystemFont(ofSize: 60)
+        attrs[.foregroundColor] = UIColor.black
+        
+        let shadow = NSShadow()
+        shadow.shadowOffset = CGSize(width: 3, height: 3)
+        shadow.shadowColor = UIColor.white
+        attrs[.shadow] = shadow
+        
+        navigationController?.navigationBar.largeTitleTextAttributes = attrs
+    }
    }
 }
 

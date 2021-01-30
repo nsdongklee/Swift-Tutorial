@@ -10,6 +10,7 @@
 		23CEBE6D25C29D8700AF3710 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CEBE6C25C29D8700AF3710 /* MyViewController.swift */; };
 		23CEBE7125C29FE700AF3710 /* CustomNibViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CEBE6F25C29FE700AF3710 /* CustomNibViewController.swift */; };
 		23CEBE7225C29FE700AF3710 /* CustomNibViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23CEBE7025C29FE700AF3710 /* CustomNibViewController.xib */; };
+		23FB8E2D25C55D9900ADC4A7 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB8E2C25C55D9900ADC4A7 /* CustomTabBarController.swift */; };
 		AA0EBAE32116AEAC0066C954 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0EBAE22116AEAC0066C954 /* FirstViewController.swift */; };
 		AA0EBAE52116AEC10066C954 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0EBAE42116AEC10066C954 /* SecondViewController.swift */; };
 		AA0EBAE72116AED70066C954 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0EBAE62116AED70066C954 /* ThirdViewController.swift */; };
@@ -64,6 +65,7 @@
 		23CEBE6C25C29D8700AF3710 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		23CEBE6F25C29FE700AF3710 /* CustomNibViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNibViewController.swift; sourceTree = "<group>"; };
 		23CEBE7025C29FE700AF3710 /* CustomNibViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomNibViewController.xib; sourceTree = "<group>"; };
+		23FB8E2C25C55D9900ADC4A7 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		AA0EBAE22116AEAC0066C954 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		AA0EBAE42116AEC10066C954 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		AA0EBAE62116AED70066C954 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 			children = (
 				AA6B877421183E340057356F /* TabBarController.storyboard */,
 				AA6B877621183ED70057356F /* TabBarHostViewController.swift */,
+				23FB8E2C25C55D9900ADC4A7 /* CustomTabBarController.swift */,
 				AA6B87782118446D0057356F /* FirstTabViewController.swift */,
 			);
 			path = TabBarController;
@@ -396,6 +399,7 @@
 				AAC345AA211DA7C8007D2460 /* ColorListTableViewController.swift in Sources */,
 				AA6B87792118446D0057356F /* FirstTabViewController.swift in Sources */,
 				AA18406221198094003102B0 /* BlackViewController.swift in Sources */,
+				23FB8E2D25C55D9900ADC4A7 /* CustomTabBarController.swift in Sources */,
 				AAC3459E211D640A007D2460 /* PlayerView.swift in Sources */,
 				AA1B5E722112FB5A002D1AF8 /* LandscapeModalViewController.swift in Sources */,
 				AA1B5E692112E89D002D1AF8 /* ModalViewController.swift in Sources */,

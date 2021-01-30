@@ -40,14 +40,19 @@ class SecondViewController: UIViewController {
    @objc func addRightButtons() {
       let btn1 = UIBarButtonItem(barButtonSystemItem: .action, target: nil, action: nil)
       let btn2 = UIBarButtonItem(title: "Two", style: .plain, target: nil, action: nil)
-      
+    
+    let sw = UISwitch()
+    let switchItem = UIBarButtonItem(customView: sw)
+    // 네비게이션 아이템은 배열로 저장
+    navigationItem.setRightBarButtonItems( [switchItem, btn1, btn2], animated: true)
       
    }
    
    override func viewDidLoad() {
       super.viewDidLoad()
       
-      
+    navigationItem.leftItemsSupplementBackButton = true
+    navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem:  .add, target: self, action: #selector(addRightButtons))
    }
 }
 
