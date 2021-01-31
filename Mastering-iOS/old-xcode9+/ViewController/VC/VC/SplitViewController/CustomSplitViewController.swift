@@ -29,16 +29,48 @@ class CustomSplitViewController: UISplitViewController {
       
       delegate = self
    }
-   
+    
+    // 마스터뷰 컨트롤러(뷰컨트롤러의 첫번째 저장)
    func setupDefaultValue() {
-      
+    guard let nav = viewControllers.first as? UINavigationController, let masterVC = nav.viewControllers.first as? ColorListTableViewController else {
+        return
+    }
+    
+    guard let detailVC = viewControllers.last?.childViewControllers.first as? ColorDetailViewController else {
+        return
+    }
+    
+    detailVC.color = masterVC.list.first
+    
+    switch displayMode {
+    case .primaryHidden, .primaryOverlay:
+        
+        detailVC.navigationItem.leftBarButtonItem = displayModeButtonItem
+    default:
+        detailVC.navigationItem.leftBarButtonItem = nil
+    }
    }
 }
 
 
 
 extension CustomSplitViewController: UISplitViewControllerDelegate {
-   
+    
+    // horizontal size 가 컴팩트하게 바뀌었을때 호출
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+        return true
+    }
+    
+    // 디바이스 위치상태 변경때마다 호출됨
+    func splitViewController(_ svc: UISplitViewController, willChangeTo displayMode: UISplitViewControllerDisplayMode) {
+        switch displayMode {
+        case .primaryHidden, .primaryOverlay:
+            
+            viewControllers.last?.childViewControllers.first?.navigationItem.leftBarButtonItem = displayModeButtonItem
+        default:
+            viewControllers.last?.childViewControllers.first?.navigationItem.leftBarButtonItem = nil
+        }
+    }
 }
 
 

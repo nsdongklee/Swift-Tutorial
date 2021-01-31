@@ -23,15 +23,48 @@
 import UIKit
 
 class SplitVCHostViewController: UIViewController {
-   @IBAction func presentSplitViewController(_ sender: Any) {
-      
+    @available(iOS 11.0, *)
+    @IBAction func presentSplitViewController(_ sender: Any) {
+    guard let masterVC = storyboard?.instantiateViewController(withIdentifier: "ColorListTableViewController") else {
+        return
+    }
+    let nav = UINavigationController(rootViewController: masterVC)
+    
+    guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "ColorDetailViewController") else {
+        return
+    }
+    
+    let splitVC = CustomSplitViewController()
+    splitVC.viewControllers = [nav, detailVC]
+    
+    // 스와이프 제스처 사용여부
+    splitVC.presentsWithGesture = false
+    // 마스터뷰 컨트롤러 너비(읽기 전용>> 원하는 너비로 못 맞춤)
+    splitVC.primaryColumnWidth
+    splitVC.preferredPrimaryColumnWidthFraction = 0.5
+    
+    splitVC.minimumPrimaryColumnWidth = 100
+    splitVC.maximumPrimaryColumnWidth = view.bounds.width / 2
+    
+        if #available(iOS 11.0, *) {
+            splitVC.primaryEdge = .trailing
+        } else {
+            // Fallback on earlier versions
+        }
+    
+    present(splitVC, animated: true, completion: nil)
    }
    
    @IBAction func unwindToSplitHost(_ sender: UIStoryboardSegue) {
       
    }
    
-   
+   // segue 가 호출되기 전에 할 동작들
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? CustomSplitViewController {
+            vc.setupDefaultValue()
+        }
+    }
    override func viewDidLoad() {
       super.viewDidLoad()
       

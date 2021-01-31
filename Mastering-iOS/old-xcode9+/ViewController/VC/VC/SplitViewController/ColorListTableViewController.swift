@@ -32,7 +32,7 @@ class ColorListTableViewController: UITableViewController {
    }
    
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      if let vc = segue.destination as? ColorDetailViewController {
+    if let vc = segue.destination.childViewControllers.first as? ColorDetailViewController {
          if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
             vc.color = list[indexPath.row]
          }
