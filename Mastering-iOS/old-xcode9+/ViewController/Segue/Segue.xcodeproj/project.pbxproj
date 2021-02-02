@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23FB8E5C25C91A8300ADC4A7 /* HalfEmbedingSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB8E5B25C91A8300ADC4A7 /* HalfEmbedingSegue.swift */; };
+		23FB8E5F25C91BCB00ADC4A7 /* HalfEmbedingUnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB8E5E25C91BCB00ADC4A7 /* HalfEmbedingUnwindSegue.swift */; };
 		AA8A1DC3211C221600D82EB4 /* UnwindSegue.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA8A1DC1211C221600D82EB4 /* UnwindSegue.storyboard */; };
 		AA8A1DC5211C223A00D82EB4 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1DC4211C223A00D82EB4 /* FirstViewController.swift */; };
 		AA8A1DC7211C225500D82EB4 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8A1DC6211C225500D82EB4 /* SecondViewController.swift */; };
@@ -28,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		23FB8E5B25C91A8300ADC4A7 /* HalfEmbedingSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfEmbedingSegue.swift; sourceTree = "<group>"; };
+		23FB8E5E25C91BCB00ADC4A7 /* HalfEmbedingUnwindSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfEmbedingUnwindSegue.swift; sourceTree = "<group>"; };
 		AA8A1DC2211C221600D82EB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Segue/Base.lproj/UnwindSegue.storyboard; sourceTree = "<group>"; };
 		AA8A1DC4211C223A00D82EB4 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		AA8A1DC6211C225500D82EB4 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +82,8 @@
 			children = (
 				AA8A1DCD211C4FE200D82EB4 /* CustomSegue.storyboard */,
 				AA8A1DD0211C505100D82EB4 /* CustomSegueViewController.swift */,
+				23FB8E5B25C91A8300ADC4A7 /* HalfEmbedingSegue.swift */,
+				23FB8E5E25C91BCB00ADC4A7 /* HalfEmbedingUnwindSegue.swift */,
 			);
 			path = CustomSegue;
 			sourceTree = "<group>";
@@ -225,6 +231,8 @@
 				AAC410FE211B7D490092834A /* PerformSegueViewController.swift in Sources */,
 				AA8A1DC9211C25F800D82EB4 /* ThirdViewController.swift in Sources */,
 				AA8A1DCB211C260B00D82EB4 /* FourthViewController.swift in Sources */,
+				23FB8E5C25C91A8300ADC4A7 /* HalfEmbedingSegue.swift in Sources */,
+				23FB8E5F25C91BCB00ADC4A7 /* HalfEmbedingUnwindSegue.swift in Sources */,
 				AA8A1DD1211C505100D82EB4 /* CustomSegueViewController.swift in Sources */,
 				AAC410F5211B52A30092834A /* HostViewController.swift in Sources */,
 				AAC41102211B80BB0092834A /* MessageViewController.swift in Sources */,

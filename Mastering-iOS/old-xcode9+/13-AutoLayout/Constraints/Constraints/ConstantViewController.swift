@@ -25,7 +25,19 @@ import UIKit
 class ConstantViewController: UIViewController {
    @IBOutlet weak var redView: UIView!
    
-   @IBAction func updateFrame(_ sender: Any) {
-      
+    @IBOutlet weak var widthConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
+    
+    @IBAction func updateFrame(_ sender: Any) {
+//    var frame = redView.frame
+//    frame.size.width = 100
+//    frame.size.height = 100
+//
+//    redView.frame = frame
+    
+    // 화면 방향이 바뀌어도 적용되도록
+        widthConstraint.constant = 100
+        heightConstraint.constant = 100
    }
 }

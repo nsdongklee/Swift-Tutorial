@@ -27,9 +27,26 @@ class PerformSegueViewController: UIViewController {
    @IBOutlet weak var grantedSwitch: UISwitch!
    
    @IBAction func perform(_ sender: Any) {
-      
+        
+    // 화면 전체를 Segue 연결할 때
+    performSegue(withIdentifier: "manualSegue", sender: nil)
    }
    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? MessageViewController {
+            vc.segueName = segue.identifier
+        }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
+        if identifier == "conditionalSegue" {
+            return grantedSwitch.isOn
+        }
+        
+        return true
+    }
+    
    override func viewDidLoad() {
       super.viewDidLoad()
       

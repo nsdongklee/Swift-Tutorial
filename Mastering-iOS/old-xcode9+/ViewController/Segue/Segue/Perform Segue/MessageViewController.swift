@@ -30,6 +30,7 @@ class MessageViewController: UIViewController {
    override func viewDidLoad() {
       super.viewDidLoad()
       
+    // segue 를 통해서 데이터 전달
       nameLabel.text = segueName
    }
 }

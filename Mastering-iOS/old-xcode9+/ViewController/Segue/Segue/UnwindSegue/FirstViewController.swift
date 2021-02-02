@@ -24,6 +24,18 @@ import UIKit
 
 class FirstViewController: UIViewController {
    
+    // 돌아갈 화면에서 unwind 받을 준비
+    @IBAction func unwindToFirst(_ sender: UIStoryboardSegue) {
+        
+        // 호출시점 파악
+        print(#function, type(of: sender.source), "=>", type(of: sender.destination))
+    }
+    
+    override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, withSender sender: Any) -> Bool {
+        print(type(of: self), #function)
+        return true
+    }
+    
    override func viewDidLoad() {
       super.viewDidLoad()
       

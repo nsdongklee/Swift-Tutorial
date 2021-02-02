@@ -24,14 +24,40 @@ import UIKit
 
 class StatusBarViewController: UIViewController {
    
+    var hidden = false
+    
+    override var prefersStatusBarHidden: Bool {
+        return hidden
+    }
    
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .none
+    }
+    
    @IBAction func toggleVisibility(_ sender: Any) {
-      
+//    // 읽기전용 속성이라 값 저장할 수 있는 속성 따로 만들어야함
+//      prefersStatusBarHidden = !prefersStatusBarHidden
+    hidden = !hidden
+    
+    // 애니메이션 블록에서 호출되도록 지정
+    UIView.animate(withDuration: 0.3) {
+        self.setNeedsStatusBarAppearanceUpdate()
+    }
+    
    }
-   
-      
+    
+    var style = UIStatusBarStyle.default
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return style
+    }
+    
    @IBAction func toggleStyle(_ sender: Any) {
-      
+    let color  = style == .default ? UIColor.white : UIColor.darkGray
+    UIView.animate(withDuration: 0.3) {
+        self.view.backgroundColor = color
+    }
+    setNeedsStatusBarAppearanceUpdate()
    }
    
    override func viewDidLoad() {

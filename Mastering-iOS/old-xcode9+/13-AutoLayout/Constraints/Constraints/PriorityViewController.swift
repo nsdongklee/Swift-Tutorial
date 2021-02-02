@@ -22,8 +22,17 @@
 
 import UIKit
 
-class PriorityViewController: UIViewController {   
+class PriorityViewController: UIViewController {
+    
+    @IBOutlet weak var width1: NSLayoutConstraint!
+    
+    @IBOutlet weak var width2: NSLayoutConstraint!
+    
    @IBAction func togglePriority(_ sender: Any) {
       
+    width1.priority = width1.priority.rawValue < 999 ? UILayoutPriority(rawValue: 1000) : UILayoutPriority(rawValue: 800)
+    width2.priority = width2.priority.rawValue < 999 ? UILayoutPriority(rawValue: 1000) : UILayoutPriority(rawValue: 800)
+    
+    // 코드로 Priority 구현하려면 구조체 메소드에서 접근해야한다.
    }
 }

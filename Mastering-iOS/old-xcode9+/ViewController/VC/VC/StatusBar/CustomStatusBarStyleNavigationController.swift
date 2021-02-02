@@ -24,4 +24,18 @@ import UIKit
 
 class CustomStatusBarStyleNavigationController: UINavigationController {
    
+    override var childViewControllerForStatusBarHidden: UIViewController? {
+        
+        // top view 컨트롤러 리턴
+        return topViewController
+    }
+    
+    override var childViewControllerForStatusBarStyle: UIViewController? {
+        return topViewController
+    }
+    
+    // 탑 뷰 컨트롤러가 홈인디케이터 속성을 오버라이딩
+    override func childViewControllerForHomeIndicatorAutoHidden() -> UIViewController? {
+        return topViewController
+    }
 }

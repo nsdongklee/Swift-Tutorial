@@ -23,7 +23,28 @@
 import UIKit
 
 class BlackViewController: UIViewController {
-   
+    
+    var style = UIStatusBarStyle.default
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return style
+    }
+    
+   @IBAction func toggleStyle(_ sender: Any) {
+    let color  = style == .default ? UIColor.white : UIColor.darkGray
+    UIView.animate(withDuration: 0.3) {
+        self.view.backgroundColor = color
+    }
+   }
+//    override var preferredStatusBarStyle: UIStatusBarStyle {
+//        return .lightContent
+//    }
+    
+    // 가로일때도 보여주기
+    override var prefersStatusBarHidden: Bool {
+        return false
+    }
+    
    override func viewDidLoad() {
       super.viewDidLoad()
       
