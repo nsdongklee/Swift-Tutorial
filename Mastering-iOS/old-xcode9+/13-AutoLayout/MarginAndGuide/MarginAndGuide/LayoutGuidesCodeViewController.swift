@@ -28,8 +28,7 @@ class LayoutGuidesCodeViewController: UIViewController {
    
    override func viewDidLoad() {
       super.viewDidLoad()
-      
-      
+    
    }
 }
 

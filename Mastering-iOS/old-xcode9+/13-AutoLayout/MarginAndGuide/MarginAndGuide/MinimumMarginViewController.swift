@@ -27,7 +27,12 @@ class MinimumMarginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       
-      
+        // 코드로 구현해야한다.
+        if #available(iOS 11.0, *) {
+            viewRespectsSystemMinimumLayoutMargins = false
+        } else {
+            // Fallback on earlier versions
+        }
     }
    
    override func viewDidLayoutSubviews() {

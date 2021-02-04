@@ -394,45 +394,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9I5-yp-nf2">
-                                <rect key="frame" x="444" y="218" width="103" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9I5-yp-nf2">
+                                <rect key="frame" x="444" y="218" width="41.5" height="20.5"/>
                                 <color key="backgroundColor" red="0.1137254902" green="0.63137254899999995" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Prx-YD-UyM">
-                                <rect key="frame" x="444" y="287" width="103" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Prx-YD-UyM">
+                                <rect key="frame" x="444" y="287" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.1137254902" green="0.63137254899999995" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Button">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gtx-2C-aX1">
-                                <rect key="frame" x="419" y="407" width="154" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gtx-2C-aX1">
+                                <rect key="frame" x="419" y="407" width="32" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Odi-70-JhR">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Odi-70-JhR">
                                 <rect key="frame" x="471" y="359" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </switch>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bxG-Ed-e9k">
                                 <rect key="frame" x="419" y="567" width="133" height="87"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.95686274510000002" green="0.1450980392" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="HY1-MX-e6z">
-                                <rect key="frame" x="417" y="484" width="172" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="HY1-MX-e6z">
+                                <rect key="frame" x="417" y="484" width="144" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="rqq-cb-Iy9"/>
+                                </constraints>
                             </slider>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="h9r-YV-DsK"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Odi-70-JhR" firstAttribute="top" secondItem="Prx-YD-UyM" secondAttribute="bottom" constant="42" id="3kV-0U-afv"/>
+                            <constraint firstItem="Prx-YD-UyM" firstAttribute="leading" secondItem="h9r-YV-DsK" secondAttribute="leading" constant="444" id="DEh-ed-weD"/>
+                            <constraint firstItem="HY1-MX-e6z" firstAttribute="top" secondItem="gtx-2C-aX1" secondAttribute="bottom" constant="43" id="FCt-Bo-GMj"/>
+                            <constraint firstItem="Odi-70-JhR" firstAttribute="leading" secondItem="h9r-YV-DsK" secondAttribute="leading" constant="471" id="MCv-Fs-KlR"/>
+                            <constraint firstItem="gtx-2C-aX1" firstAttribute="top" secondItem="Odi-70-JhR" secondAttribute="bottom" constant="17" id="OYm-sL-8vk"/>
+                            <constraint firstItem="gtx-2C-aX1" firstAttribute="leading" secondItem="h9r-YV-DsK" secondAttribute="leading" constant="419" id="Qzn-TX-a80"/>
+                            <constraint firstItem="9I5-yp-nf2" firstAttribute="top" secondItem="h9r-YV-DsK" secondAttribute="top" constant="116" id="RO3-Th-S8L"/>
+                            <constraint firstItem="Prx-YD-UyM" firstAttribute="top" secondItem="9I5-yp-nf2" secondAttribute="bottom" constant="48.5" id="hlP-dP-umA"/>
+                            <constraint firstItem="HY1-MX-e6z" firstAttribute="leading" secondItem="h9r-YV-DsK" secondAttribute="leading" constant="419" id="p3c-RP-hfc"/>
+                            <constraint firstItem="9I5-yp-nf2" firstAttribute="leading" secondItem="h9r-YV-DsK" secondAttribute="leading" constant="444" id="tas-is-t1V"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bzr-mj-5h1" userLabel="First Responder" sceneMemberID="firstResponder"/>

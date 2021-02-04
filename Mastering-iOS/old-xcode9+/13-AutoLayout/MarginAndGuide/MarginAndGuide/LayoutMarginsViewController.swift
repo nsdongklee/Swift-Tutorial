@@ -49,6 +49,7 @@ class LayoutMarginsViewController: UIViewController {
    
    func setupMargins() {
       if #available(iOS 11.0, *) {
+        // redview의 마진을 구현하는 방법
          redView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 30, leading: 30, bottom: 30, trailing: 30)
       } else {
          redView.layoutMargins = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
