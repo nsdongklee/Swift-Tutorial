@@ -24,8 +24,14 @@ import UIKit
 
 class ViewController: UIViewController {
 
-   override func viewDidLoad() {
+    @IBOutlet weak var emailButton: UIButton!
+    
+    override func viewDidLoad() {
       super.viewDidLoad()
       // Do any additional setup after loading the view, typically from a nib.
+        emailButton.layer.cornerRadius = 3
+        emailButton.layer.borderColor = UIColor.lightGray.cgColor
+        emailButton.layer.borderWidth = 1
+    
    }
 }

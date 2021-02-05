@@ -26,6 +26,17 @@ class ViewController: UIViewController {
 
    @IBOutlet weak var contentTextView: UITextView!
    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
+        
+        // 사이즈 클래스 매칭
+        switch (newCollection.horizontalSizeClass, newCollection.verticalSizeClass) {
+        case (.regular, .regular):
+            contentTextView.font = UIFont.systemFont(ofSize: 30)
+        default:
+            contentTextView.font = UIFont.systemFont(ofSize: 20)
+        }
+    }
    
 }
 

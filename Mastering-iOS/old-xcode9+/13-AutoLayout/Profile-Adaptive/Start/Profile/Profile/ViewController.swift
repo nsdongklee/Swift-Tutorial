@@ -24,11 +24,23 @@ import UIKit
 
 class ViewController: UIViewController {
 
-   
+    @IBOutlet weak var nameLabel: UILabel!
+    
    @IBOutlet weak var emailButton: UIButton!
    
    @IBOutlet weak var profileImageView: UIImageView!
    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
+        
+        // 사이즈 클래스 확인후 버티컬이 컴팩트이면 레이아웃 바꾸는 코드
+        if newCollection.verticalSizeClass == .compact {
+            nameLabel.textAlignment = .left
+        } else {
+            nameLabel.textAlignment = .center
+        }
+    }
+    
    override func viewDidLoad() {
       super.viewDidLoad()
       
