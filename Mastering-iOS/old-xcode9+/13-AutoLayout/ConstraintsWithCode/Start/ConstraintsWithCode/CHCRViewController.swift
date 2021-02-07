@@ -32,7 +32,9 @@ class CHCRViewController: UIViewController {
    override func viewDidLoad() {
       super.viewDidLoad()
       
-      
+      // CH 변경
+    let p = UILayoutPriority(rawValue: 250)
+    topLabel.setContentHuggingPriority(p, for: .vertical)
    }
 }
 

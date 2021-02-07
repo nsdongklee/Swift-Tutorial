@@ -35,14 +35,23 @@ class AnimationViewController: UIViewController {
    
    
    @IBAction func animate(_ sender: Any) {
-      UIView.animate(withDuration: 0.3) { [weak self] in
+    // 애니메이션 적용
+    widthConstraint.constant = CGFloat(arc4random_uniform(91)) + 10
+    heightConstraint.constant = CGFloat(arc4random_uniform(91)) + 10
+    
+    UIView.animate(withDuration: 0.3) { [weak self] in
          guard let strongSelf = self else { return }
-
-         var frame = strongSelf.redView.frame
-         let rnd = CGFloat(arc4random_uniform(91)) + 10
-         frame.size = CGSize(width: rnd, height: rnd)
-
-         strongSelf.redView.frame = frame
+    
+        strongSelf.view.layoutIfNeeded()
+//        strongSelf.widthConstraint.constant = CGFloat(arc4random_uniform(91)) + 10
+        
+        
+//         var frame = strongSelf.redView.frame
+//         let rnd = CGFloat(arc4random_uniform(91)) + 10
+//         frame.size = CGSize(width: rnd, height: rnd)
+//
+//         strongSelf.redView.frame = frame
+        
       }
    }
    
