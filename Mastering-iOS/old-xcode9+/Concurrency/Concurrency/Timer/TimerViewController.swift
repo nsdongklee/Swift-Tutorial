@@ -47,12 +47,35 @@ class TimerViewController: UIViewController {
    
    var timer: Timer?
    
+    // 생성자로 전달할 메소드
+    @objc func timeFired(_ timer: Timer) {
+        updateTimer(timer)
+    }
+    
+    
    @IBAction func startTimer(_ sender: Any) {
-   
+    guard timer == nil else {
+        return
+    }
+//    timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
+//        guard timer.isValid else { return }
+//        self.updateTimer(timer)
+//    })
+    
+    
+    timer = Timer(timeInterval: 1, target: self, selector: #selector(timeFired(_:)), userInfo: nil, repeats: true)
+    
+    // 허용오차 별도지정
+    timer?.tolerance = 0.2
+    
+    // 런루프에 접근해서 fired 시켜야함
+    RunLoop.current.add(timer!, forMode: .defaultRunLoopMode)
+    timer?.fire()
    }
    
    @IBAction func stopTimer(_ sender: Any) {
-      
+    // true 로 인해서 반복사용한다면 해당 메소드를 사용해서 적절한 시기에 중지시킬 수 있어야함
+    timer?.invalidate()
    }
    
    override func viewDidLoad() {
@@ -64,10 +87,12 @@ class TimerViewController: UIViewController {
    override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
       
+    startTimer(self)
    }
    
    override func viewWillDisappear(_ animated: Bool) {
       super.viewWillDisappear(animated)
-            
+    timer?.invalidate()
+    timer = nil
    }
 }

@@ -28,10 +28,34 @@ class DispatchWorkItemViewController: UIViewController {
    var currentWorkItem: DispatchWorkItem!
    
    @IBAction func submitItem(_ sender: Any) {
-      
+    currentWorkItem = DispatchWorkItem(block: {
+        for num in 0..<100 {
+            // 취소 기능 관리
+            guard !self.currentWorkItem.isCancelled else { return }
+            print(num, separator: " ", terminator: " ")
+            Thread.sleep(forTimeInterval: 0.1)
+        }
+    })
+    
+    workQueue.async(execute: currentWorkItem)
+    
+    // 작업 완료후 실행할 코드
+    currentWorkItem.notify(queue: workQueue) {
+        print("Done")
+    }
+    let result = currentWorkItem.wait(timeout: .now() + 3)  // 작업 완료될 때 까지 대기
+    switch result {
+    case .timedOut:
+        print("Timeout")
+    case .success:
+        print("Success")
+    default:
+        break
+    }
    }
    
    @IBAction func cancelItem(_ sender: Any) {
-      
+      // 취소 여부를 개별관리 해야함
+    currentWorkItem.cancel()
    }
 }

@@ -29,12 +29,27 @@ class StartViewController: UIViewController {
    
    @IBAction func start(_ sender: Any) {
       countLabel.text = "0"
+    
+    // 주요시점 로그 출력
+    logThread(with: "Start")
       
-      for count in 0...100 {
-         countLabel.text = "\(count)"
-      }      
+    // 아래 코드를 백그라운드에서 실행되도록
+    DispatchQueue.global().async {
+        for count in 1 ... 100 {
+            DispatchQueue.main.async {
+                self.logThread(with: "Update Label")
+                self.countLabel.text = "\(count)"
+            }
+            Thread.sleep(forTimeInterval: 0.1)
+        }
+        self.logThread(with: "Done")
+    }
+//      for count in 0...100 {
+//         countLabel.text = "\(count)"
+//      }
+    self.logThread(with: "End")
    }
-   
+
    func logThread(with task: String) {
       if Thread.isMainThread {
          print("Main Thread: \(task)")

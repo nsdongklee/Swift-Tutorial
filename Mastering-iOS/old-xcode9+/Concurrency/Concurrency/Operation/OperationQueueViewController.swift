@@ -24,13 +24,68 @@ import UIKit
 
 class OperationQueueViewController: UIViewController {
    
-   
+   //큐 인스턴스 생성
+    let queue = OperationQueue()
+    var isCancelled = false
+    
    @IBAction func startOperation(_ sender: Any) {
-      
+    // 취소 속성 값 초기화
+    isCancelled = false
+    
+    queue.addOperation {
+        // 오퍼레이션은 메모리 관리 직접 처리 못함
+        autoreleasepool {
+            for _ in 1 ..< 100 {
+                guard !self.isCancelled else {
+                    return
+                }
+                print("👻", separator: " ", terminator: " ")
+                // 반복 지연 추가
+                Thread.sleep(forTimeInterval: 0.3)
+            }
+        }
+    }
+    let op = BlockOperation {
+        autoreleasepool {
+            for _ in 1..<100 {
+                guard !self.isCancelled else {
+                    return
+                }
+                print("🤡", separator: " ", terminator: " ")
+                Thread.sleep(forTimeInterval: 0.6)
+            }
+        }
+    }
+    queue.addOperation(op)
+    
+    op.addExecutionBlock {
+        autoreleasepool {
+            for _ in 1..<100 {
+                guard !self.isCancelled else {
+                    return
+                }
+                print("👾", separator: " ", terminator: " ")
+                Thread.sleep(forTimeInterval: 0.5)
+            }
+        }
+    }
+    
+    // 커스텀 클래스로 추가
+    let op2 = CustomOperation(type: "😻")
+    queue.addOperation(op2)
+    
+    op.completionBlock = {
+        print("Done")
+    }
+    
+    
    }
-   
    @IBAction func cancelOperation(_ sender: Any) {
-      
+    //취소 속성 변경
+    isCancelled = true
+    
+    // 해당 메소드를 사용해도 바로 취소되지 않는다.
+    queue.cancelAllOperations()
    }
    
    deinit {

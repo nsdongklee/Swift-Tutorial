@@ -35,21 +35,30 @@ class DispatchSemaphoreViewController: UIViewController {
       value = 0
       valueLabel.text = "\(value)"
       
+    //semaphore 생성
+    let sem = DispatchSemaphore(value: 1)   //
+    
       workQueue.async(group: group) {
          for _ in 1...1000 {
+            sem.wait()  // 카운트가 증가할때 까지 기다림
             self.value += 1
+            sem.signal()    // 대기중인 다른 작업이 실행되도록 semaphore 에 알려줌
          }
       }
       
       workQueue.async(group: group) {
          for _ in 1...1000 {
+            sem.wait()
             self.value += 1
+            sem.signal()
          }
       }
       
       workQueue.async(group: group) {
          for _ in 1...1000 {
+            sem.wait()
             self.value += 1
+            sem.signal()
          }
       }
       
@@ -62,14 +71,19 @@ class DispatchSemaphoreViewController: UIViewController {
       value = 0
       valueLabel.text = "\(value)"
       
+    let sem = DispatchSemaphore(value: 0)
+    
       workQueue.async {
          for _ in 1...100 {
             self.value += 1
             Thread.sleep(forTimeInterval: 0.1)
          }
+        
+        sem.signal()
       }
       
       DispatchQueue.main.async {
+//        sem.wait()
          self.valueLabel.text = "\(self.value)"
       }
    }

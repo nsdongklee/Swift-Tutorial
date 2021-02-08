@@ -26,6 +26,13 @@ class ImageFilterViewController: UIViewController {
    
    @IBOutlet weak var listCollectionView: UICollectionView!
    
+    //
+    let downloadQueue = DispatchQueue(label: "DownloadQueue", attributes: .concurrent)
+    let downloadGroup = DispatchGroup()
+    
+    // 필터작업에 사용할 concurrent
+    let filterQueue = DispatchQueue(label: "FilterQueue", attributes: .concurrent)
+    
    var isCancelled = false
    
    @IBAction func start(_ sender: Any) {
@@ -33,8 +40,32 @@ class ImageFilterViewController: UIViewController {
       listCollectionView.reloadData()
       
       isCancelled = false
-   
-      
+    
+    // 다운로드 그룹에 추가
+    PhotoDataSource.shared.list.forEach { data in
+        self.downloadQueue.async(group: self.downloadGroup) {
+            self.downloadAndResize(target: data)
+        }
+    }
+    // 작업 완료 후 reload
+    self.downloadGroup.notify(queue: DispatchQueue.main) {
+        self.reloadCollectionView()
+    }
+    
+    // 같은 시점에 추가되는 작업(병렬로 실행, 배열에 저장되어있는 데이터 수를 저장)
+    self.downloadGroup.notify(queue: self.filterQueue) {
+        DispatchQueue.concurrentPerform(iterations: PhotoDataSource.shared.list.count) { (idx) in
+            let data = PhotoDataSource.shared.list[idx]
+            self.applyFilter(target: data)
+            
+            
+            // reload 할 셀 생성 위치
+            let targetIndexPath = IndexPath(item: idx, section: 0)
+            DispatchQueue.main.async {  // 메인 큐에서 호출되도록
+                self.reloadCollectionView(at: targetIndexPath)
+            }
+        }
+    }
    }
    
    @IBAction func cancel(_ sender: Any) {

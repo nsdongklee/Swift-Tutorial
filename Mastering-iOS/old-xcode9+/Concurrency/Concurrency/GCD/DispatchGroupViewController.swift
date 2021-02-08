@@ -27,27 +27,37 @@ class DispatchGroupViewController: UIViewController {
    let workQueue = DispatchQueue(label: "WorkQueue", attributes: .concurrent)
    let serialWorkQueue = DispatchQueue(label: "SerialWorkQueue")
    
+    // 그룹화할 인스턴스 추가
+    let group = DispatchGroup()
+    
    @IBAction func submit(_ sender: Any) {
-      workQueue.async {
+//    group.enter() 쓸 필요없음
+    
+    workQueue.async(group: group) {
          for _ in 0..<10 {
             print("🍏", separator: "", terminator: "")
             Thread.sleep(forTimeInterval: 0.1)
          }
+//        self.group.leave()
       }
 
-      workQueue.async {
+      workQueue.async(group: group) {
          for _ in 0..<10 {
             print("🍎", separator: "", terminator: "")
             Thread.sleep(forTimeInterval: 0.2)
          }
       }
 
-      serialWorkQueue.async {
+      serialWorkQueue.async(group: group) {
          for _ in 0..<10 {
             print("🍋", separator: "", terminator: "")
             Thread.sleep(forTimeInterval: 0.3)
          }
       }
+    
+    group.notify(queue: DispatchQueue.main) {
+        print("Done")
+    }
    }
 }
 
