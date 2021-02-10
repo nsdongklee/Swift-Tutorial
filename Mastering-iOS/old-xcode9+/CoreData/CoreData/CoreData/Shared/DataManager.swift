@@ -28,12 +28,37 @@ class DataManager {
    
    private init() { }
    
+    var container: NSPersistentContainer?
 
    var mainContext: NSManagedObjectContext {
-      fatalError("Not Implemented")
+//      fatalError("Not Implemented")
+    
+    // 컨테이너가 생성한 기본 컨텍스트 리턴
+    guard let context = container?.viewContext else {
+        fatalError()
+    }
+    return context
    }
+    
+    func setup(modelName: String) {
+        container = NSPersistentContainer(name: modelName)
+        container?.loadPersistentStores(completionHandler: { (desc, error) in
+            if let error = error {
+                fatalError(error.localizedDescription)
+            }
+        })
+    }
    
    func saveMainContext() {
-      fatalError("Not Implemented")
+//      fatalError("Not Implemented")
+    mainContext.perform {
+        if self.mainContext.hasChanges {
+            do {
+                try self.mainContext.save()
+            } catch {
+                print(error)
+            }
+        }
+    }
    }
 }

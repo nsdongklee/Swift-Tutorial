@@ -20,6 +20,7 @@
 //  THE SOFTWARE.
 //
 
+// JSON 파일 파싱 후 배열로 리턴하는 코드
 import Foundation
 
 struct DepartmentJSON: Codable {

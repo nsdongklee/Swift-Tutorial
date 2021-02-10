@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
    
    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
       
+    // shared 의 setup 메소드 호출
+    DataManager.shared.setup(modelName: "Sample")
       
       return true
    }

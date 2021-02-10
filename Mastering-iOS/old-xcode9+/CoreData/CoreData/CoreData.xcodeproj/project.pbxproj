@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		239A907D25D3B785004DE316 /* Sample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 239A907B25D3B785004DE316 /* Sample.xcdatamodeld */; };
+		239A908625D3C4A5004DE316 /* DataManager+Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239A908525D3C4A5004DE316 /* DataManager+Person.swift */; };
+		239A909125D3CFBA004DE316 /* PersonEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239A908F25D3CFBA004DE316 /* PersonEntity+CoreDataClass.swift */; };
+		239A909225D3CFBA004DE316 /* PersonEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239A909025D3CFBA004DE316 /* PersonEntity+CoreDataProperties.swift */; };
 		AA10E0B9215EB64E00F28316 /* DataManager+BatchInsert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10E0B8215EB64E00F28316 /* DataManager+BatchInsert.swift */; };
 		AA10E0BD215EC2FD00F28316 /* DataManager+Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10E0BC215EC2FD00F28316 /* DataManager+Department.swift */; };
 		AA10E0BF215EC31900F28316 /* DataManager+Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10E0BE215EC31900F28316 /* DataManager+Employee.swift */; };
@@ -74,6 +78,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		239A907C25D3B785004DE316 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		239A908525D3C4A5004DE316 /* DataManager+Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataManager+Person.swift"; sourceTree = "<group>"; };
+		239A908F25D3CFBA004DE316 /* PersonEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersonEntity+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		239A909025D3CFBA004DE316 /* PersonEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersonEntity+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		AA10E0B8215EB64E00F28316 /* DataManager+BatchInsert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataManager+BatchInsert.swift"; sourceTree = "<group>"; };
 		AA10E0BC215EC2FD00F28316 /* DataManager+Department.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataManager+Department.swift"; sourceTree = "<group>"; };
 		AA10E0BE215EC31900F28316 /* DataManager+Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataManager+Employee.swift"; sourceTree = "<group>"; };
@@ -310,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				AA9C0E79215C0156000557A5 /* ManagedObject.storyboard */,
+				239A908525D3C4A5004DE316 /* DataManager+Person.swift */,
 				AA9C0E7B215C03DD000557A5 /* ManagedObjectViewController.swift */,
 				AA9C0E7D215C0691000557A5 /* PersonComposeViewController.swift */,
 			);
@@ -319,7 +328,10 @@
 		AA9C0E78215C0109000557A5 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				239A908F25D3CFBA004DE316 /* PersonEntity+CoreDataClass.swift */,
+				239A909025D3CFBA004DE316 /* PersonEntity+CoreDataProperties.swift */,
 				AA50861F21766A0D00570EE3 /* DataManager.swift */,
+				239A907B25D3B785004DE316 /* Sample.xcdatamodeld */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -483,10 +495,12 @@
 				AA694DB1217607B00005FDF5 /* ProfileViewController.swift in Sources */,
 				AA20408F216E5171002B5DC6 /* BatchProcessingTableViewController.swift in Sources */,
 				AA10E0B9215EB64E00F28316 /* DataManager+BatchInsert.swift in Sources */,
+				239A908625D3C4A5004DE316 /* DataManager+Person.swift in Sources */,
 				AA73AA06215FEA1100A877BE /* SortTableViewController.swift in Sources */,
 				AA10E0C9215F162700F28316 /* ResultTypesViewController.swift in Sources */,
 				AA32406F215DC0110050F2F7 /* REmployeeListViewController.swift in Sources */,
 				AA471B25217082F60002DE25 /* ConcurrencyTopicListTableViewController.swift in Sources */,
+				239A909225D3CFBA004DE316 /* PersonEntity+CoreDataProperties.swift in Sources */,
 				AA4B175F216DD25C000EF6CE /* ChildContextTableViewController.swift in Sources */,
 				AA50862021766A0D00570EE3 /* DataManager.swift in Sources */,
 				AAAE6DC92168A9680062BCAE /* ContactTransformer.swift in Sources */,
@@ -503,8 +517,10 @@
 				AA324061215DA7570050F2F7 /* RawData.swift in Sources */,
 				AA4B175D216DC968000EF6CE /* BackgroundContextTableViewController.swift in Sources */,
 				AA10E0C1215ED9D900F28316 /* RDepartmentComposerTableViewController.swift in Sources */,
+				239A909125D3CFBA004DE316 /* PersonEntity+CoreDataClass.swift in Sources */,
 				AA61AE482160197D00AF1404 /* FetchedPropertyTableViewController.swift in Sources */,
 				AA7521B62173C7B600C63706 /* FetchLimitTableViewController.swift in Sources */,
+				239A907D25D3B785004DE316 /* Sample.xcdatamodeld in Sources */,
 				AA7412512169E8B100E83068 /* FaultingTableViewController.swift in Sources */,
 				AAF9F31C21562A2E00D49F47 /* AppDelegate.swift in Sources */,
 				AA9C0E7C215C03DD000557A5 /* ManagedObjectViewController.swift in Sources */,
@@ -722,6 +738,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		239A907B25D3B785004DE316 /* Sample.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				239A907C25D3B785004DE316 /* Model.xcdatamodel */,
+			);
+			currentVersion = 239A907C25D3B785004DE316 /* Model.xcdatamodel */;
+			path = Sample.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = AAF9F31021562A2E00D49F47 /* Project object */;
 }

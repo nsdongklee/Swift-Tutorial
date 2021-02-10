@@ -44,16 +44,33 @@ class PersonComposeViewController: UIViewController {
       if let ageStr = ageField.text, let ageVal = Int(ageStr) {
          age = ageVal
       }
+    
+    // 옵셔널 바인딩 구문 추가
+    if let target = target as? PersonEntity {
+        DataManager.shared.updatePerson(entity: target, name: name, age: age) {
+            NotificationCenter.default.post(name: PersonComposeViewController.newPersonDidInsert, object: nil)
+            self.dismiss(animated: true, completion: nil)
+        }
+    } else {
+        //
+    }
       
-      
-      
-      NotificationCenter.default.post(name: PersonComposeViewController.newPersonDidInsert, object: nil)
-      self.dismiss(animated: true, completion: nil)
+      // createPerson 메소드 호출 및 입력값 전달
+    DataManager.shared.createPerson(name: name, age: age) {
+        NotificationCenter.default.post(name: PersonComposeViewController.newPersonDidInsert, object: nil)
+        self.dismiss(animated: true, completion: nil)
+    }
    }
    
    override func viewDidLoad() {
       super.viewDidLoad()
       
-      
+    if let target = target as? PersonEntity {
+        navigationItem.title = "Edit"
+        nameField.text = target.name
+        ageField.text = "\(target.age)"
+    } else {
+        navigationItem.title = "Add"
+    }
    }
 }

@@ -33,26 +33,39 @@ struct Content {
    let url: URL
    
    var name: String {
-      return ""
+//      return ""
+    let values = try? url.resourceValues(forKeys: [.localizedNameKey])
+    return values?.localizedName ?? "???"
    }
    
    var size: Int {
-      return 0
+//      return 0
+    let values = try? url.resourceValues(forKeys: [.fileSizeKey])
+    return values?.fileSize ?? 0
    }
    
    var type: Type {
-      return .file
-   }
+//      return .file
+        let values = try? url.resourceValues(forKeys: [.isDirectoryKey])
+        return values?.isDirectory == true ? .directory : .file
+    }
+    
+    var isExcludedFromBackup: Bool {
+        let values = try? url.resourceValues(forKeys: [.isExcludedFromBackupKey])
+        return values?.isExcludedFromBackup ?? false
+    }
+}
    
    var isExcludedFromBackup: Bool {
       return false
    }
-}
+
 
 
 
 class FileManagerTableViewController: UITableViewController {
    
+    // 경로를 처리하고 싶다면 NSURL
    var currentDirectoryUrl: URL?
    
    var contents = [Content]()
@@ -66,15 +79,68 @@ class FileManagerTableViewController: UITableViewController {
    
    
    func refreshContents() {
-      
+    contents.removeAll()    // 배열 초기화
+    defer {
+        tableView.reloadData()
+    }
+    // 표시할 url 없으면 실행 중지
+    guard let url = currentDirectoryUrl else {
+        fatalError("Empty URL")
+    }
+    
+    do {
+        let properties: [URLResourceKey] = [.localizedNameKey, .isDirectoryKey, .fileSizeKey, .isExcludedFromBackupKey]
+        
+        let currentContentUrls = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: properties, options: .skipsHiddenFiles)    // 숨겨진 파일은 결과에서 제외
+        
+        for url in currentContentUrls {
+            let content = Content(url: url)
+            contents.append(content)
+        }
+        contents.sort { (lhs, rhs) -> Bool in
+            if lhs.type == rhs.type {
+                return lhs.name.lowercased() < rhs.name.lowercased()
+            }
+            return lhs.type.rawValue < rhs.type.rawValue
+        }
+    } catch {
+        print("error")
+    }
    }
    
    func updateNavigationTitle() {
-      
+      // 디렉토리 표시
+    // url 이 있으면 표시, 없으면 임시 문자열
+    guard let url = currentDirectoryUrl else {
+        navigationItem.title = "???"
+        return
+    }
+    // 디렉토리에 이름 표시
+    do {
+        let values = try url.resourceValues(forKeys: [.localizedNameKey])   // 이름만 가져옴
+        navigationItem.title = values.localizedName
+    } catch {
+        print(error)
+    }
    }
    
    func move(to url: URL) {
-      
+    do {
+        // 접근할 수 있다면 소스 체크
+        let reachable = try url.checkResourceIsReachable()
+        if !reachable {
+            return
+        }
+    } catch {
+        print(error)
+        return
+    }
+    
+    if let vc = storyboard?.instantiateViewController(withIdentifier: "FileManagerTableViewController") as? FileManagerTableViewController {
+        vc.currentDirectoryUrl = url
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
    }
 
    
@@ -128,7 +194,10 @@ class FileManagerTableViewController: UITableViewController {
    override func viewDidLoad() {
       super.viewDidLoad()
       
-      
+      // 컨테이너의 루트 디렉토리 저장
+    if currentDirectoryUrl == nil {
+        currentDirectoryUrl = URL(fileURLWithPath: NSHomeDirectory())
+    }
    }
    
    // MARK: - Table view data source
@@ -143,6 +212,7 @@ class FileManagerTableViewController: UITableViewController {
       let target = contents[indexPath.row]
       
       switch target.type {
+      // 디렉토리 일 때, 파일일 때 원하는 역할
       case .directory:
          cell.textLabel?.text = "[\(target.name)]"
          cell.detailTextLabel?.text = nil

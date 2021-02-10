@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20B50" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Department" representedClassName="DepartmentEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String"/>
+        <relationship name="employees" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Employee" inverseName="department" inverseEntity="Employee"/>
+    </entity>
+    <entity name="Employee" representedClassName="DepartmentEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="salary" attributeType="Decimal" defaultValueString="0.0"/>
+        <relationship name="department" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Department" inverseName="employees" inverseEntity="Department"/>
+    </entity>
+    <entity name="Person" representedClassName="PersonEntity" isAbstract="YES" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Person" positionX="147.927734375" positionY="-66.61653137207031" width="128" height="88"/>
+        <element name="Employee" positionX="151.6773681640625" positionY="37.97613525390625" width="128" height="73"/>
+        <element name="Department" positionX="-48.1558837890625" positionY="40.60397338867188" width="128" height="73"/>
+    </elements>
+</model>
