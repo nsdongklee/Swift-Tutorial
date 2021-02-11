@@ -36,7 +36,8 @@ class BatchSizeTableViewController: UITableViewController {
    func fetchWithBatchSize() {
       let request = NSFetchRequest<NSManagedObject>(entityName: "Employee")
       
-      
+    // 배치사이즈 지정(n 개만큼 먼저 읽어들임)
+    request.fetchBatchSize = 30
       
       let sortByName = NSSortDescriptor(key: "name", ascending: true)
       request.sortDescriptors = [sortByName]

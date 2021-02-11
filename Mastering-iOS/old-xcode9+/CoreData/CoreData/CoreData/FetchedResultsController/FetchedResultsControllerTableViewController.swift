@@ -25,19 +25,29 @@ import CoreData
 
 class FetchedResultsControllerTableViewController: UITableViewController {
    
-   lazy var fetchRequest: NSFetchRequest<NSManagedObject> = {
-      let request = NSFetchRequest<NSManagedObject>(entityName: "Employee")
+   lazy var fetchRequest: NSFetchRequest<EmployeeEntity> = {
+      let request = NSFetchRequest<EmployeeEntity>(entityName: "Employee")
 
       request.predicate = NSPredicate(format: "department != NIL")
-
+    
+    // 데이터를 정렬하지 않으면 충돌 발생
+    let sortByDeptName = NSSortDescriptor(key: "department.name", ascending: false)
       let sortByName = NSSortDescriptor(key: "name", ascending: true)
-      request.sortDescriptors = [sortByName]
+      request.sortDescriptors = [sortByDeptName, sortByName]
 
       request.fetchBatchSize = 30
 
       return request
    }()
-   
+    
+    lazy var resultController: NSFetchedResultsController<EmployeeEntity> = {
+        [weak self] in
+        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DataManager.shared.mainContext, sectionNameKeyPath: #keyPath(EmployeeEntity.department.name), cacheName: nil)
+        controller.delegate = self
+        return controller
+    }()
+    
+    
    @IBAction func showMenu(_ sender: Any) {
       showMenu()
    }
@@ -54,29 +64,93 @@ class FetchedResultsControllerTableViewController: UITableViewController {
    override func viewDidLoad() {
       super.viewDidLoad()
       
-      
+    do {
+        try resultController.performFetch()
+    } catch {
+        print(error.localizedDescription)
+    }
    }
    
    deinit {
-      
+    resultController.delegate = nil
    }
+}
+
+//
+extension FetchedResultsControllerTableViewController: NSFetchedResultsControllerDelegate {
+    
+    // 데이터 업데이트 전 호출
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    // 개별 데이터가 업데이트 될 때마다 호출
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            if let insertIndexPath = newIndexPath {
+                tableView.insertRows(at: [insertIndexPath], with: .automatic)
+            }
+        case .delete:
+            if let deleteIndexPath = indexPath {
+                tableView.deleteRows(at: [deleteIndexPath], with: .fade)
+            }
+        case .update:
+            if let updateIndexPat = indexPath {
+                tableView.reloadRows(at: [updateIndexPat], with: .fade)
+            }
+        case .move:
+            if let originalIndexPath = indexPath, let targetIndexPath = newIndexPath {
+                tableView.moveRow(at: originalIndexPath, to: targetIndexPath)
+            }
+        default:
+            break
+        }
+    }
+    
+    // 섹션이 업데이트 될 때마다 호출
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        switch type {
+        case .insert:
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .automatic)
+        case .delete:
+            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .automatic)
+        default:
+            break
+        }
+    }
+    
+    
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.reloadData()
+    }
 }
 
 
 
 extension FetchedResultsControllerTableViewController {
    override func numberOfSections(in tableView: UITableView) -> Int {
-      return 0
+    return resultController.sections?.count ?? 0
    }
    
    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return 0
+    guard let sections = resultController.sections
+    else {
+        return 0
+    }
+    let sectionInfo = sections[section]
+    return sectionInfo.numberOfObjects
    }
    
    
    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
       
+    // 특정 위치의 데이터를 얻을 때
+    let target = resultController.object(at: indexPath)
+    cell.textLabel?.text = target.name
+    cell.detailTextLabel?.text = target.department?.name
       
       return cell
    }

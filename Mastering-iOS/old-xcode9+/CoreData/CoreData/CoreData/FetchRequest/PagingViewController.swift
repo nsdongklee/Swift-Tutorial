@@ -46,7 +46,9 @@ class PagingViewController: UIViewController {
    
    func fetch() {
       let request = NSFetchRequest<NSManagedObject>(entityName: "Employee")
-
+    
+    request.fetchLimit = 10
+    request.fetchOffset = offset
       
       let sortByName = NSSortDescriptor(key: "name", ascending: true)
       request.sortDescriptors = [sortByName]

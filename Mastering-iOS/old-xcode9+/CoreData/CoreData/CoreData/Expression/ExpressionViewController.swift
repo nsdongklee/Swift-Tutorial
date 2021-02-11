@@ -41,8 +41,28 @@ class ExpressionViewController: UIViewController {
       let sortByName = NSSortDescriptor(key: "name", ascending: true)
       request.sortDescriptors = [sortByName]
       
-      
-      
+    //
+    request.resultType = .dictionaryResultType
+    
+    let employeeCountExprDescription = NSExpressionDescription()
+    employeeCountExprDescription.name = "count"
+    
+    //
+    let countArg = NSExpression(forKeyPath: "employees")
+    let countExpr = NSExpression(forFunction: "count:", arguments: [countArg])
+    employeeCountExprDescription.expression = countExpr
+    employeeCountExprDescription.expressionResultType = .integer64AttributeType
+    
+    //
+    let averageSalaryExprDescription = NSExpressionDescription()
+    averageSalaryExprDescription.name = "avg"
+    let salaryArg = NSExpression(forKeyPath: "employees.salary")
+    averageSalaryExprDescription.expression = NSExpression(forFunction: "average:", arguments: [salaryArg])
+    averageSalaryExprDescription.expressionResultType = .decimalAttributeType
+    
+    request.propertiesToFetch = ["name", employeeCountExprDescription, averageSalaryExprDescription]
+    
+    
       do {
          list = try DataManager.shared.mainContext.fetch(request)
          listTableView.reloadData()
@@ -69,7 +89,9 @@ extension ExpressionViewController: UITableViewDataSource {
       
       
       if let target = list[indexPath.row] as? NSManagedObject {
-         let count = target.value(forKeyPath: "employees.@count.intValue") as? Int
+         
+        // 연산자를 활용해서 값 생성
+        let count = target.value(forKeyPath: "employees.@count.intValue") as? Int
          let avg = target.value(forKeyPath: "employees.@avg.salary.doubleValue") as? Double
          
          if let name = target.value(forKey: "name") as? String, let count = count {

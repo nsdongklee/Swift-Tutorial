@@ -33,10 +33,55 @@ class BatchInsertViewController: UIViewController {
       sender.isEnabled = false
       importCount = 0
       
+    // 글로벌 큐에서 실행 >> Concurrency 강의 참고
       DispatchQueue.global().async {
          let start = Date().timeIntervalSinceReferenceDate
          
-         
+        let departmentList = DepartmentJSON.parsed()
+        let employeeList = EmployeeJSON.parsed()    // 파싱 후 배열로 리턴
+        
+        let context = DataManager.shared.mainContext
+        context.performAndWait {
+            for dept in departmentList {
+                guard let newDeptEntity = DataManager.shared.insertDepartment(from: dept, in: context) else {
+                    fatalError()
+                }
+                
+                let employeesInDept = employeeList.filter { $0.department == dept.id }
+                
+                // 배열을 반복문으로 열거
+                for emp in employeesInDept {
+                    guard let newEmployeeEntity = DataManager.shared.insertEmployee(from: emp, in: context) else {
+                        fatalError()
+                    }
+                    // 두 엔티티 연결
+                    newDeptEntity.addToEmployees(newEmployeeEntity)
+                    newEmployeeEntity.department = newDeptEntity
+                    
+                    self.importCount += 1
+                    
+                    DispatchQueue.main.async {
+                        self.countLabel.text = "\(self.importCount)"
+                    }
+                }
+                do {
+                    try context.save()
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+            
+            // Department 에 속하지 않는 나머지 데이터 처리
+            let otherEmployees = employeeList.filter { $0.department == 0 }
+            
+            for emp in otherEmployees {
+                _ = DataManager.shared.insertEmployee(from: emp, in: context)
+                self.importCount += 1
+                DispatchQueue.main.async {
+                    self.countLabel.text = "\(self.importCount)"
+                }
+            }
+        }
          DispatchQueue.main.async {
             sender.isEnabled = true
             self.countLabel.text = "Done"

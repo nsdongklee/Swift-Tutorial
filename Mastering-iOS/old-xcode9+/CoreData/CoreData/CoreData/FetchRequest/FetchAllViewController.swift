@@ -30,7 +30,27 @@ class FetchAllViewController: UITableViewController {
    @IBAction func fetch(_ sender: Any?) {
       let context = DataManager.shared.mainContext
       
-      
+//    // 첫 번째 방법
+//    let request = NSFetchRequest<NSManagedObject>() // 상속할 클래스를 지정해놔야함
+//    let entity = NSEntityDescription.entity(forEntityName: "Employee", in: context)
+//    request.entity = entity
+    
+//    // 두 번째 방법: 엔티티 인스턴스 미생성, 생성자로 엔티티 이름 전달
+//    let request = NSFetchRequest<NSManagedObject>(entityName: "Employee")
+    
+    // 엔티티 메소드가 제공하는 메소드 활용
+    let request: NSFetchRequest<EmployeeEntity> = EmployeeEntity.fetchRequest()
+    
+//    // 요청 직접실행하는 메소드
+//    request.execute()
+    
+    // 요청을 컨텍스트로 전달
+    do {
+        list = try context.fetch(request)
+        tableView.reloadData()
+    } catch {
+     fatalError()
+    }
    }
    
    override func viewDidLoad() {

@@ -6,7 +6,7 @@ import UIKit
  - Whitespace Insensitive
  - Case Insensitive
  */
-
+NSPredicate(format: "target LIKE %@", "value")
 
 
 

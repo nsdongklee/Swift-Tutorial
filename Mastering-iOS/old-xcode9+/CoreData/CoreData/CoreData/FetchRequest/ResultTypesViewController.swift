@@ -27,9 +27,13 @@ class ResultTypesViewController: UIViewController {
    
    let context = DataManager.shared.mainContext
    
+    // 디폴트 리턴 타입
    @IBAction func fetchManagedObject(_ sender: Any) {
       let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Employee")
       
+    // 리턴 타입 지정
+    request.resultType = .managedObjectResultType
+    
       do {
          let list = try context.fetch(request)
          if let first = list.first {
@@ -44,12 +48,18 @@ class ResultTypesViewController: UIViewController {
    @IBAction func fetchCount(_ sender: Any) {
       let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Employee")
       
+    // 리퀘스트로 가져온 데이터 수를 출력
+    request.resultType = .countResultType
+    
       do {
          let list = try context.fetch(request)
          if let first = list.first {
             print(type(of: first))
             print(first)
          }
+        
+        let cnt = try context.count(for: request)
+        
       } catch {
          fatalError(error.localizedDescription)
       }
@@ -57,7 +67,13 @@ class ResultTypesViewController: UIViewController {
    
    @IBAction func fetchDictionary(_ sender: Any) {
       let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Employee")
-      
+    
+    // 특정 attr 집합만 가져올 때
+    request.resultType = .dictionaryResultType
+
+    // 그래서 이름과 주소만 가져오도록 속성 접근
+    request.propertiesToFetch = ["name", "address"]
+    
       do {
          let list = try context.fetch(request)
          if let first = list.first {
@@ -71,7 +87,11 @@ class ResultTypesViewController: UIViewController {
    
    @IBAction func fetchManagedObjectID(_ sender: Any) {
       let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Employee")
-      
+      // 데이터를 주고받을 때 쓰는 고유한 아이디
+    request.resultType = .managedObjectResultType
+    
+    
+    
       do {
          let list = try context.fetch(request)
          if let first = list.first {

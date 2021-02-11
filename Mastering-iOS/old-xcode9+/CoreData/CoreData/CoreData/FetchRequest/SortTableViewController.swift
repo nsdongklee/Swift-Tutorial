@@ -32,28 +32,34 @@ class SortTableViewController: UITableViewController {
    }
    
    func sortByNameASC() {
-      
+      let sortByNameASC = NSSortDescriptor(key: "name", ascending: true)
+    fetch(sortDescriptors: [sortByNameASC])
    }
    
    func sortByNameDESC() {
-      
+    // keypath Expr 로 접근도 가능
+    let sortByNameDESC = NSSortDescriptor(key: #keyPath(EmployeeEntity.name), ascending: false)
+    fetch(sortDescriptors: [sortByNameDESC])
    }
    
    func sortByAgeThenBySalary() {
-      
+    let sortByAge = NSSortDescriptor(key: #keyPath(EmployeeEntity.age), ascending: true)
+    let sortBySalary = NSSortDescriptor(key: #keyPath(EmployeeEntity.salary), ascending: false)
+    
+    fetch(sortDescriptors: [sortByAge, sortBySalary])
    }
    
    func fetch(sortDescriptors: [NSSortDescriptor]? = nil) {
-//      let request = NSFetchRequest<NSManagedObject>(entityName: "Employee")
-//
-//      request.sortDescriptors = sortDescriptors
-//
-//      do {
-//         list = try DataManager.shared.mainContext.fetch(request)
-//         tableView.reloadData()
-//      } catch {
-//         fatalError(error.localizedDescription)
-//      }
+      let request = NSFetchRequest<NSManagedObject>(entityName: "Employee")
+    
+      request.sortDescriptors = sortDescriptors
+
+      do {
+         list = try DataManager.shared.mainContext.fetch(request)
+         tableView.reloadData()
+      } catch {
+         fatalError(error.localizedDescription)
+      }
    }
    
    override func viewDidLoad() {

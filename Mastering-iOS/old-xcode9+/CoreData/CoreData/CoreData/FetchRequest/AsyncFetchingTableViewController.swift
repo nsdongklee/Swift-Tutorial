@@ -32,9 +32,19 @@ class AsyncFetchingTableViewController: UITableViewController {
 
       let sortByName = NSSortDescriptor(key: "name", ascending: true)
       request.sortDescriptors = [sortByName]
+    
+    //
+    let asyncRequest = NSAsynchronousFetchRequest<NSManagedObject>(fetchRequest: request) { (result) in
+        guard let list = result.finalResult else { return }
+        self.list = list
+        self.tableView.reloadData()
+    }
 
       do {
-         list = try DataManager.shared.mainContext.fetch(request)
+//         list = try DataManager.shared.mainContext.fetch(request)
+        try DataManager.shared.mainContext.execute(asyncRequest)
+        
+        
          tableView.reloadData()
       } catch {
          fatalError(error.localizedDescription)

@@ -15,7 +15,6 @@ import Foundation
  SUBQUERY(collection, varName, predicate)
  */
 
-
 let predicate = NSPredicate(format: "SUBQUERY(employees, $emp, $emp.age >= 40).@count >= 3")
 departments.filtered(using: predicate)
 
