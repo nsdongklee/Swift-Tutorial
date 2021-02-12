@@ -30,7 +30,29 @@ class URLRequestViewController: UIViewController {
       imageView.image = nil
       
       // Code Input Point #1
-      
+    guard let url = URL(string: picUrlStr) else {
+        fatalError("Invalid URL")
+    }
+    
+    // 메인쓰레드에서 실행되기때문에 작업이 완료되는 동안 다른 작업 못함
+//    do {
+//        let data = try Data(contentsOf: url)
+//        imageView.image = UIImage(data: data)
+//    } catch {
+//        print(error)
+//    }
+    
+    let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        if let error = error {
+            print(error)
+        } else if let data = data {
+            let image = UIImage(data: data)
+            DispatchQueue.main.async {
+                self.imageView.image = image
+            }
+        }
+    }
+    task.resume()
       // Code Input Point #1
    }
 }

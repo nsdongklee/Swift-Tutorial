@@ -30,25 +30,34 @@ class WebContentViewController: UIViewController {
    
    @IBAction func goBack(_ sender: Any) {
       // Code Input Point #3
-      
+    if webView.canGoBack {
+        webView.goBack()
+    }
       // Code Input Point #3
    }
    
    @IBAction func reload(_ sender: Any) {
       // Code Input Point #5
-      
+    webView.reload()
       // Code Input Point #5
    }
    
    @IBAction func goForward(_ sender: Any) {
       // Code Input Point #4
-      
+    if webView.canGoForward {
+        webView.goForward()
+    }
       // Code Input Point #4
    }
    
    func go(to urlStr: String) {
       // Code Input Point #2
-      
+    guard let url = URL(string: urlStr) else {
+        fatalError("Invalid URL")
+    }
+    let request = URLRequest(url: url)
+    webView.load(request)
+    
       // Code Input Point #2
    }
    
@@ -59,7 +68,8 @@ class WebContentViewController: UIViewController {
       webView.navigationDelegate = self
       
       // Code Input Point #1
-      
+      // url 기본값 설정
+    urlField.text = "https://www.apple.com/"
       // Code Input Point #1
    }
 }
