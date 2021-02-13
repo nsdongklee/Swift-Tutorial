@@ -499,10 +499,27 @@ let b: Double = 56.78
 
 - **Optional Binding** : 옵셔널을 안전하게 처리하는 방법
 
+  - 위처럼 옵셔널 데이터를 강제로 추출할 수 있으나 안전하게 처리하는 방법으로 옵셔널 바인딩과 옵셔널 체이닝이 있다. 아래 예시는 옵셔널 바인딩으로서 조건에 맞을 때만 데이터를 바인딩 할 수 있게하는 패턴이다.
+
+    ```swift
+    // Sample
+    func printName(_name: String) {
+      print(_name)
+    }
+    
+    var myName: String? = nil
+    if let name = myName {		// if문을 활용하는 옵셔널 바인딩
+      printName(_name: name)
+    }
+    ```
+
+- **Optional Chaining** : 하위 Property 에 옵셔널 값이 있는지 연속적으로 확인하면서, 중간에 하나라도 nil이 발견되면 nil을 반환하는 형식
+
   ```swift
-  // Sample
-  if let na
+  let roomCount = zedd.residence?.numberOfRooms
   ```
+
+  > residence 에서 옵셔널 값이 있는지 연속적으로 확인하면서 데이터에 접근하는 방식
 
 - **Implicitly Unwrapped Optionals** : 자동으로 추출되는 옵셔널
 
@@ -781,10 +798,12 @@ let b: Double = 56.78
   // 새로운 메모리 공간에 저장하고 싶을 때
   let newStr = String(str2.prefix(3))
   
+  ```
+
 // 서브스크립트 문법으로 범위를 추출해 주세요.
   let result = str[startIndex ..< endIndex]
   print(result == "nisi ut aliquip")
-  
+
   // 범위 연산자로 substring
   let s = str2[str2.startIndex ..< str2.index(str2.startIndex, offsetBy: 2)]
   ```
@@ -1470,6 +1489,78 @@ let b: Double = 56.78
   - *Closure Capture List*
 
     - 클로저에서 발생하는 강한 참조 사이클을 해결하는 방법
+
+## Exception Handling
+
+> 스위프트에서 예외처리 관련 문법은 `throws`, `do-catch`, `try` 가 있다.
+
+### 오류처리의 3가지 과정
+
+1. *오류 종류 정의*
+2. *발생한 오류 던지기*
+3. *던진 오류 처리하기*
+
+#### (1) 오류 종류 정의
+
+```swift
+enum TestError: Error {
+	case outOfRange
+	case invalidInput(testNum: Int)
+  // ...
+}
+```
+
+#### (2) 오류 던지기
+
+```swift
+func printNumber(_ number: Int) -> Int {
+  var text = " "
+  guard number > 0 else { return } //
+  return text
+}
+```
+
+> 오류 처리는 발생할 수 있는 곳에 사용
+
+```swift
+func printNumber(_ number: Int) throws -> Int {    // 1
+   var text = " "
+  
+   guard number > 0 else { 
+       throw TestError.outOfRange                // 2
+   } 
+   return text
+}
+```
+
+#### (3) 던진 오류 처리하기
+
+던진 예외를 받는 곳은 메소드를 사용하는 곳이다. 예를 들어, 위의 `printNumber()` 함수가 사용되는 과정에서,
+
+```swift
+let object = Object()
+let resultNumber = object.printNumber(-20)
+```
+
+위와 같이 사용하면 받을 수 있는 범위를 벗어나 오류를 출력한다. 이 때 인스턴스를 오류없이 사용하고 싶다면 `try` 를 사용한다.
+
+```swift
+let resultNumber = try object.printNumber(-20)
+```
+
+여기에 추가로 `do-catch` 로 감싸줘야 처리를 할 수 있다.
+
+```swift
+do {
+	let resultNumber = try object.printNumber(-20)
+} catch {
+	print(error)
+}
+```
+
+- `try!`, `try?`
+  - `try?` : 사용하려는 해당 메소드에서 오류가 발생할 수도 있다는 점을 나타낸다. 리턴 값을 옵셔널 타입 혹은 `nil` 로 받을 수 있게 됩니다.
+  - `try!` : 메소드에서 오류가 발생하지 않는다고 확신할 때, 오류발생 시 런타임 에러 발생 및 강제종로
 
 
 ## References

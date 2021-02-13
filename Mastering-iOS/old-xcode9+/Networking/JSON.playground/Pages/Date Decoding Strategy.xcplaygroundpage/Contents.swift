@@ -21,7 +21,7 @@ guard let jsonData = jsonStr.data(using: .utf8) else {
 let decoder = JSONDecoder()
 
 //
-
+decoder.dateDecodingStrategy = .iso8601
 //
 
 do {

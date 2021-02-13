@@ -24,8 +24,8 @@ do {
    print(error)
 }
 
-//
-
+// 
+//encoder.dataEncodingStrategy = .iso8601
 //
 
 do {

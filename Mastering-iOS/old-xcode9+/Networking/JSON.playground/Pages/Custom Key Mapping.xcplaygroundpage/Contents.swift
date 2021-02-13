@@ -8,7 +8,14 @@ struct Person: Codable {
    var age: Int
    var address: String?
    
-   //
+   // key가 다른 데이터를 맵핑
+    enum CodingKeys: String, CodingKey {
+        case firstName
+        case lastName
+        case age
+        case address = "homeAddress"
+    }
+    
    
    //
 }
