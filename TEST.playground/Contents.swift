@@ -305,3 +305,78 @@ post.attachment
 
 Calendar.current.component(.year, from: Date())
 print(Date())
+
+//클래스 상속 Inheritance
+class Figure1 {
+    var name: String = "Unknown"
+    init(name: String) {
+        self.name = name
+    }
+    func draw() {
+        print("draw \(name)")
+    }
+}
+class Circle: Figure1 {
+    var radius: Double = 0.0
+    
+    override func draw () {
+        super.draw()
+        print("superdraw")
+    }
+}
+
+let cClass = Circle(name: "circle")
+cClass.radius
+
+
+// 상속 예시
+class Figure {
+    var width: Double
+    var height: Double
+    var isSquare: Bool = true
+    
+    init(width: Double, height: Double) {
+        self.width = width
+        self.height = height
+    }
+    func area() -> Double {
+        return width * height
+    }
+}
+
+class Rectangle: Figure {
+    override var width: Double {
+        get {
+            return super.width
+        }
+        set {
+            super.width = newValue
+        }
+    }
+    override var height: Double {
+        get {
+            return super.height
+        }
+        set {
+            super.height = newValue
+        }
+    }
+    override func area() -> Double {
+        return width * height
+    }
+    override var isSquare: Bool {
+        get {
+            return super.width == super.height
+        }
+        set {
+            super.isSquare = newValue
+        }
+    }
+}
+
+let r = Rectangle(width: 100, height: 200)
+if r.area() == 20000 {
+    print("yes")
+}
+r.isSquare
+
