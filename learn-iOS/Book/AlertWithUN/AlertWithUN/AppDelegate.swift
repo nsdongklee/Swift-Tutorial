@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  SubmitValue-Back
+//  AlertWithUN
 //
-//  Created by 이동규 on 2021/09/21.
+//  Created by 이동규 on 2021/09/22.
 //
 
 import UIKit
@@ -10,13 +10,19 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    //값을 저장할 변수 선언
-    var paramEmail: String?
-    var paramUpdate: Bool?
-    var paramInterval: Double?
-    
+
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // ======== 추가
+        // (경고창,배지,사운드) 를 사용하는 알림환경 정보를 생성하고, 사용자 동의 여부 창을 실행
+        if #available(iOS 10.0, *) {
+            let notiCenter = UNUserNotificationCenter.current()
+            notiCenter.requestAuthorization(options: [.alert, .badge, .sound]) { (didAllow, error) in }
+        } else {
+            // UILocalNotification 객체를 이용해서 로컬알림 설정한다.
+        }
+        // ========
         return true
     }
 

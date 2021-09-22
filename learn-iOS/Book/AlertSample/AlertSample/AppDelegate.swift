@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  SubmitValue-Back
+//  AlertSample
 //
-//  Created by 이동규 on 2021/09/21.
+//  Created by 이동규 on 2021/09/22.
 //
 
 import UIKit
@@ -10,11 +10,8 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    //값을 저장할 변수 선언
-    var paramEmail: String?
-    var paramUpdate: Bool?
-    var paramInterval: Double?
-    
+
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
