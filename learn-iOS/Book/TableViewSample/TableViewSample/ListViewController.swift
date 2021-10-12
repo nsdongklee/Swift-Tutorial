@@ -15,6 +15,14 @@ class ListViewController: UITableViewController {
 //        ("말할 수 없는 비밀", "여기서 너까지 다섯 걸음", "2015-05-07", 9.19, "secret.jpg"),
 //    ]
     
+    var page = 1
+    @IBOutlet var moreBtn: UIButton!
+    @IBAction func more(_ sender: Any) {
+        self.page += 1
+        self.callMovieAPI()
+        self.tableView.reloadData()
+    }
+
     // 테이블 뷰를 구성할 리스트 데이터. 클로저를 이용해서 생략과 함께 데이터를 추가할 수 있다.
     lazy var list: [MovieVO] = {
         var dataList = [MovieVO]()
@@ -35,9 +43,25 @@ class ListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.callMovieAPI()
+    }
+    // 이미지 데이터 처리를 메모이제이션으로 활용
+    func getThumbnailImage(_ index: Int) -> UIImage {
+        let mvo = self.list[index]
+        // 메모이제이션: 저장된 이미지 있으면 그것 반환, 아니면 내려받기
+        if let savedImage = mvo.thumbnailImage {
+            return savedImage
+        } else {
+            let url: URL! = URL(string: mvo.thumbnail!)
+            let imageData = try! Data(contentsOf: url)
+            mvo.thumbnailImage = UIImage(data: imageData)
+            return mvo.thumbnailImage!
+        }
+    }
+    
+    func callMovieAPI() {
         // 1. uri 생성
-        let url = "http://swiftapi.rubypaper.co.kr:2029/hoppin/movies?version=1&page=1&count=10&genreId=&order=releasedateasc"
+        let url = "http://swiftapi.rubypaper.co.kr:2029/hoppin/movies?version=1&page=\(self.page)&count=10&genreId=&order=releasedateasc"
         let apiURI: URL! = URL(string: url)
         // 2. REST API 호출. Data 객체활용
         let apiData = try! Data(contentsOf: apiURI)
@@ -60,11 +84,22 @@ class ListViewController: UITableViewController {
                 mvo.thumbnail = r["thumbnailImage"] as? String
                 mvo.detail = r["linkUrl"] as? String
                 mvo.rating = ((r["ratingAverage"] as! NSString).doubleValue)
-                
+                //->스크롤 성능향상위한 코드 추가
+                let url: URL! = URL(string: mvo.thumbnail!)
+                let imageData = try! Data(contentsOf: url)
+                mvo.thumbnailImage = UIImage(data: imageData)
+                //->추가 끝
                 // 프로퍼티에 추가
                 self.list.append(mvo)
             }
-        } catch { }
+            // 7. 버튼 속성 제어.
+            let totalCount = (hoppin["totalCount"] as? NSString)!.integerValue
+            if (self.list.count >= totalCount) {
+                self.moreBtn.isHidden = true
+            }
+        } catch {
+            NSLog("Parse Error.")
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -99,9 +134,17 @@ class ListViewController: UITableViewController {
         
         // 수정
 //        cell.thumbnail.image = UIImage(named: row.thumbnail!)
-        let url: URL! = URL(string: row.thumbnail!)
-        let imageData = try! Data(contentsOf: url)
-        cell.thumbnail.image = UIImage(data: imageData)
+        
+//        let url: URL! = URL(string: row.thumbnail!)
+//        let imageData = try! Data(contentsOf: url)
+//        cell.thumbnail.image = UIImage(data: imageData)
+        //이미지 객체를 대입하는 방법(스크롤 성능)
+//        cell.thumbnail.image = row.thumbnailImage
+        
+        // 스크롤 성능 높이면서 메모이제이션+비동기 처리로 성능 높임
+        DispatchQueue.main.async {
+            cell.thumbnail.image = self.getThumbnailImage(indexPath.row)
+        }
         
         // ---> 추가 끝
         
@@ -116,6 +159,18 @@ class ListViewController: UITableViewController {
         self.tableView.estimatedRowHeight = 80
         self.tableView.rowHeight = UITableView.automaticDimension   // 사진 사이즈에 맞춰서 변경해야함
     }
-    
-    
+}
+
+// MARK: - 화면 전환 시 값을 넘겨주기 위한 세그웨이 관련 처리
+extension ListViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // 세그웨이 맞는지 id로 체크
+        if segue.identifier == "segue_detail" {
+            // 사용자가 클릭한 셀을 알아낸다.
+            let path = self.tableView.indexPath(for: sender as! MovieCell)
+            // 해당 셀의 행의 정보를 통해 영화 데이터를 찾고, 목적지인 뷰컨트롤러의 mvo 변수에 대입
+            let detailVC = segue.destination as? DetailViewController
+            detailVC?.mvo = self.list[path!.row]
+        }
+    }
 }
