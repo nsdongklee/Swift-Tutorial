@@ -16,13 +16,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="agI-vb-ueh">
-                                <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArticleTableViewCell" rowHeight="80" id="agI-vb-ueh" customClass="ArticleTableViewCell" customModule="MVVM_NEWS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="agI-vb-ueh" id="CZU-on-jem">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ucT-PM-S42">
+                                            <rect key="frame" x="20" y="11" width="350" height="58"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ro-VP-zCr">
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="33"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Desc" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kE0-sp-rx5">
+                                                    <rect key="frame" x="0.0" y="41" width="350" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ucT-PM-S42" secondAttribute="bottom" id="4YE-Cn-5hf"/>
+                                        <constraint firstItem="ucT-PM-S42" firstAttribute="top" secondItem="CZU-on-jem" secondAttribute="topMargin" id="8ws-rl-Lqs"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="ucT-PM-S42" secondAttribute="trailing" id="D1p-wj-gaa"/>
+                                        <constraint firstItem="ucT-PM-S42" firstAttribute="leading" secondItem="CZU-on-jem" secondAttribute="leadingMargin" id="VE5-fd-gaL"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descriptionLable" destination="kE0-sp-rx5" id="gqc-5s-wpe"/>
+                                    <outlet property="titleLable" destination="3Ro-VP-zCr" id="bc1-W3-Ys6"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

@@ -17,9 +17,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
 //         네비게이션 바를 전역적으로 어떤 옵션을 가져갈껀지 저장
-        UINavigationBar.appearance().barTintColor = UIColor(displayP3Red: 47/255, green: 54/255, blue: 64/255, alpha: 0.0)
-        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        if #available(iOS 13.0, *) {
+            // after
+            let navBarAppearance = UINavigationBarAppearance()
+            navBarAppearance.configureWithOpaqueBackground()
+            navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            navBarAppearance.backgroundColor = UIColor(displayP3Red: 47/255, green: 54/255, blue: 64/255, alpha: 1.0)
+            UINavigationBar.appearance().standardAppearance = navBarAppearance
+            UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
+        } else {
+            // before
+            UINavigationBar.appearance().barTintColor = UIColor(displayP3Red: 47/255, green: 54/255, blue: 64/255, alpha: 1.0)
+            UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        }
         return true
     }
 
