@@ -14,6 +14,7 @@
 		23C2D7732716FA280063FF1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23C2D7712716FA280063FF1F /* LaunchScreen.storyboard */; };
 		23C2D77C2716FC990063FF1F /* OrdersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C2D77B2716FC990063FF1F /* OrdersTableViewController.swift */; };
 		23C2D77E2716FCC80063FF1F /* AddOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C2D77D2716FCC80063FF1F /* AddOrderViewController.swift */; };
+		23C2D781271730C90063FF1F /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C2D780271730C90063FF1F /* WebService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		23C2D7742716FA280063FF1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23C2D77B2716FC990063FF1F /* OrdersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewController.swift; sourceTree = "<group>"; };
 		23C2D77D2716FCC80063FF1F /* AddOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrderViewController.swift; sourceTree = "<group>"; };
+		23C2D780271730C90063FF1F /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		23C2D7652716FA240063FF1F /* MVVM_CoffeeOrder */ = {
 			isa = PBXGroup;
 			children = (
+				23C2D77F271730B70063FF1F /* Services */,
 				23C2D77A2716FAD30063FF1F /* Controllers */,
 				23C2D7662716FA240063FF1F /* AppDelegate.swift */,
 				23C2D7682716FA240063FF1F /* SceneDelegate.swift */,
@@ -76,6 +79,14 @@
 				23C2D77D2716FCC80063FF1F /* AddOrderViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		23C2D77F271730B70063FF1F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				23C2D780271730C90063FF1F /* WebService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +163,7 @@
 				23C2D7672716FA240063FF1F /* AppDelegate.swift in Sources */,
 				23C2D7692716FA240063FF1F /* SceneDelegate.swift in Sources */,
 				23C2D77C2716FC990063FF1F /* OrdersTableViewController.swift in Sources */,
+				23C2D781271730C90063FF1F /* WebService.swift in Sources */,
 				23C2D77E2716FCC80063FF1F /* AddOrderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
